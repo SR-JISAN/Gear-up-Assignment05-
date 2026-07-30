@@ -6,40 +6,33 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface HeroSlide {
   id: number;
   image: string;
-  title: string;
-  subtitle: string;
   buttonText: string;
-  buttonLink: string;
+ 
 }
 
 const heroSlides: HeroSlide[] = [
   {
     id: 1,
     image: "/sports-1.png",
-    title: "Basketball Excellence",
-    subtitle: "Experience the power and grace of the game",
     buttonText: "Rent Now",
-    buttonLink: "#",
+    
   },
   {
     id: 2,
     image: "/bike.png",
-    title: "Basketball Excellence",
-    subtitle: "Experience the power and grace of the game",
-    buttonText: "Watch Now",
-    buttonLink: "#",
+    buttonText: "Rent Now",
+  
   },
   {
     id: 3,
     image: "/sports-3.png",
-    title: "Soccer Passion",
-    subtitle: "The beautiful game awaits",
-    buttonText: "Get Started",
-    buttonLink: "#",
+    buttonText: "Rent Now",
+ 
   },
 ];
 
@@ -129,7 +122,7 @@ export default function Banner() {
           {/* Background Image */}
           <Image
             src={heroSlides[currentSlide].image}
-            alt={heroSlides[currentSlide]?.title}
+            alt="gear up banner img"
             fill
             className="object-cover"
             sizes="100vw"
@@ -148,32 +141,18 @@ export default function Banner() {
             exit="exit"
             className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-8"
           >
-            <motion.h1
-              className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 md:mb-4 text-balance"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
-              {heroSlides[currentSlide].title}
-            </motion.h1>
-
-            <motion.p
-              className="text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-8 max-w-xl text-balance"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              {heroSlides[currentSlide].subtitle}
-            </motion.p>
+           
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <Button size="lg" className="px-6 md:px-8 text-base md:text-lg">
-                {heroSlides[currentSlide].buttonText}
-              </Button>
+              <Link href="/rent-Items">
+                <Button size="lg" className="px-6 md:px-8 text-base md:text-lg">
+                  {heroSlides[currentSlide].buttonText}
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>
