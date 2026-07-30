@@ -29,6 +29,7 @@ import {
 
 import { toast } from "sonner";
 import { logout } from "@/service/logout";
+import Image from "next/image";
 
 // Nav links stored in an array for easy maintenance.
 const navLinks = [
@@ -88,17 +89,19 @@ export function Navbar({ user }: TNavUser) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
-      
         <Link
           href="/"
           className="flex items-center gap-2 font-semibold tracking-tight"
         >
-          <span className="text-lg text-foreground font-bold">
-           GEAR Up<span className="text-primary">.</span>
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Gear Up Logo"
+            width={120}
+            height={40}
+            priority
+          />
         </Link>
 
-      
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const active = isActive(link.href);

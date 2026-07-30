@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Nunito_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 
-const nunitoSans = Nunito_Sans({subsets:['latin'],variable:'--font-sans'});
+
 
 export const metadata: Metadata = {
   title: "GEAR UP",
@@ -19,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", nunitoSans.variable)}
+      className={cn("h-full", "antialiased", "font-sans")}
     >
       <body className="min-h-full w-full flex flex-col">
         

@@ -22,7 +22,7 @@ const heroSlides: HeroSlide[] = [
     image: "/sports-1.png",
     title: "Basketball Excellence",
     subtitle: "Experience the power and grace of the game",
-    buttonText: "Watch Now",
+    buttonText: "Rent Now",
     buttonLink: "#",
   },
   {
