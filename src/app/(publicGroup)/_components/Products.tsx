@@ -82,9 +82,9 @@ export default async function Products({
           key={item.id}
           className="overflow-hidden rounded-2xl border bg-white shadow-sm 
           transition-all
-    duration-300
-    hover:-translate-y-2
-    hover:shadow-xl"
+          duration-300
+          hover:-translate-y-2
+           hover:shadow-xl"
         >
           <div className="relative aspect-square overflow-hidden">
             <Image
@@ -102,6 +102,9 @@ export default async function Products({
             <p className="line-clamp-2 text-sm text-muted-foreground">
               {item.details}
             </p>
+            <h2 className="text-sm font-bold">
+              STOCK: <span className={item.stock === 0 ? "text-red-600 ": "text-green-600"}>{item.stock}</span>
+            </h2>
 
             <div className="flex items-center justify-between pt-2">
               <span className="text-lg font-bold text-primary">

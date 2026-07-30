@@ -43,7 +43,6 @@ export default function ProductFilters() {
   const debouncedSearch = useDebounce(search, 500);
 
   const updateQuery = (updates: Record<string, string>) => {
-    console.log("updateQuery", updates);
 
     startTransition(() => {
       const params = new URLSearchParams(searchParams.toString());
@@ -56,11 +55,6 @@ export default function ProductFilters() {
         }
       });
 
-      
-
-    //   router.replace(`/products?${params.toString()}`, {
-    //     scroll: false,
-    //   });
        router.replace(`/products?${params.toString()}`, {
          scroll: false,
        });
@@ -70,7 +64,6 @@ export default function ProductFilters() {
     
   };
 
-  // Live Search
   useEffect(() => {
     updateQuery({
       search: debouncedSearch,
@@ -79,7 +72,6 @@ export default function ProductFilters() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch]);
 
-  // Fetch Categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -104,8 +96,8 @@ export default function ProductFilters() {
   };
 
   return (
-    <div className="rounded-2xl border bg-card p-4 shadow-sm">
-      <div className="grid gap-4 md:grid-cols-4">
+    <div>
+      <div className="flex gap-4 justify-evenly items-center">
         {/* Search */}
         <div className="relative md:col-span-2">
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -118,7 +110,6 @@ export default function ProductFilters() {
           />
         </div>
 
-        {/* Category */}
         <Select
           value={category}
           disabled={isPending}
@@ -129,12 +120,13 @@ export default function ProductFilters() {
               category: value,
             });
           }}
+          
         >
           <SelectTrigger>
             <SelectValue placeholder="Category" />
           </SelectTrigger>
 
-          <SelectContent>
+          <SelectContent >
             <SelectItem value="all">All Categories</SelectItem>
 
             {categories.map((item) => (
@@ -145,7 +137,6 @@ export default function ProductFilters() {
           </SelectContent>
         </Select>
 
-        {/* Availability */}
         <Select
           value={availability}
           disabled={isPending}
@@ -169,19 +160,19 @@ export default function ProductFilters() {
             <SelectItem value="OUT_OF_STOCK">OUT_OF_STOCK</SelectItem>
           </SelectContent>
         </Select>
-      </div>
 
-      <div className="mt-4 flex items-center justify-between">
-        {isPending && (
-          <p className="text-sm text-muted-foreground animate-pulse">
-            Updating products...
-          </p>
-        )}
+        <div className="mt-4 flex items-center justify-between">
+          {isPending && (
+            <p className="text-sm text-muted-foreground animate-pulse">
+              Updating products...
+            </p>
+          )}
 
-        <Button variant="outline" size="sm" onClick={clearFilters}>
-          <X className="mr-2 h-4 w-4" />
-          Clear Filters
-        </Button>
+          <Button variant="outline" size="sm" onClick={clearFilters}>
+            <X className="mr-2 h-4 w-4" />
+            Clear Filters
+          </Button>
+        </div>
       </div>
     </div>
   );

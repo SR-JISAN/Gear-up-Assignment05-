@@ -32,10 +32,8 @@ const ViewProducts = async () => {
 
     const products = result.data.data;
      const items: Product[]  = products.slice(0, 3);
-     console.log("items", items)
     return (
       <div>
-        {/* Products */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <Card
@@ -79,7 +77,6 @@ const ViewProducts = async () => {
           ))}
         </div>
 
-        {/* Bottom Button */}
         <div className="mt-12 flex justify-center">
           <Link href="/products">
             <Button className="rounded-full px-8">

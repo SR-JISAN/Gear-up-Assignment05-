@@ -40,7 +40,6 @@ export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
       setDirection(1);
@@ -104,7 +103,6 @@ export default function Banner() {
 
   return (
     <div className="relative w-full h-64 md:h-96 lg:h-screen overflow-hidden bg-black">
-      {/* Slides Container */}
       <AnimatePresence initial={false} custom={direction} mode="sync">
         <motion.div
           key={currentSlide}
@@ -119,7 +117,6 @@ export default function Banner() {
           }}
           className="absolute inset-0"
         >
-          {/* Background Image */}
           <Image
             src={heroSlides[currentSlide].image}
             alt="gear up banner img"
@@ -129,10 +126,8 @@ export default function Banner() {
             priority={currentSlide === 0}
           />
 
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/40" />
 
-          {/* Content Overlay */}
           <motion.div
             key={`content-${currentSlide}`}
             variants={textVariants}
@@ -158,7 +153,6 @@ export default function Banner() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Slide Counter */}
       <motion.div
         className="absolute top-4 md:top-8 right-4 md:right-8 bg-black/40 text-white px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium backdrop-blur-sm border border-white/20"
         initial={{ opacity: 0 }}
@@ -168,7 +162,6 @@ export default function Banner() {
         {currentSlide + 1} / {heroSlides.length}
       </motion.div>
 
-      {/* Navigation Buttons */}
       <motion.button
         onClick={prevSlide}
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-200 backdrop-blur-sm border border-white/20"
@@ -187,7 +180,6 @@ export default function Banner() {
         <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
       </motion.button>
 
-      {/* Indicator Dots */}
       <motion.div
         className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20"
         initial={{ opacity: 0 }}
