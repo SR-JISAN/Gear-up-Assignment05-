@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import ProductFilters from "../_components/ProductFilters";
 import Products from "../_components/Products";
 import ProductsSkeleton from "../_components/ProductsSkeleton";
+import Footer from "@/components/share/Footer";
 
 
 
@@ -17,6 +18,8 @@ export default async function Page({ searchParams }: Props) {
   const params = await searchParams;
 
   return (
+    <>
+    
     <div className="space-y-12">
       <div className="space-y-4 pt-5 text-center">
         <h1 className="text-4xl font-bold">
@@ -41,5 +44,9 @@ export default async function Page({ searchParams }: Props) {
         />
       </Suspense>
     </div>
+
+    <Footer/>
+    </>
+    
   );
 }

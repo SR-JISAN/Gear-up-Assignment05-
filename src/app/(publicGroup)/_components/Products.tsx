@@ -3,6 +3,7 @@ import { getProducts } from "../_actions/productData";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
+import ProductDetailsModal from "./ProductDetailsModal";
 
 interface Props {
   search?: string;
@@ -103,7 +104,14 @@ export default async function Products({
               {item.details}
             </p>
             <h2 className="text-sm font-bold">
-              STOCK: <span className={item.stock === 0 ? "text-red-600 ": "text-green-600"}>{item.stock}</span>
+              STOCK:{" "}
+              <span
+                className={
+                  item.stock === 0 ? "text-red-600 " : "text-green-600"
+                }
+              >
+                {item.stock}
+              </span>
             </h2>
 
             <div className="flex items-center justify-between pt-2">
@@ -116,9 +124,10 @@ export default async function Products({
               </span>
             </div>
 
-            <Link href={`/products/${item.id}`}>
+            {/* <Link href={`/products/${item.id}`}>
               <Button className="mt-4 w-full">View Details</Button>
-            </Link>
+            </Link> */}
+            <ProductDetailsModal products={item} />
           </div>
         </Card>
       ))}
