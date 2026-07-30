@@ -148,7 +148,7 @@ export default function Banner() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <Link href="/rented-items">
+              <Link href="/products">
                 <Button size="lg" className="px-6 md:px-8 text-base md:text-lg">
                   {heroSlides[currentSlide].buttonText}
                 </Button>
