@@ -34,7 +34,7 @@ import Image from "next/image";
 // Nav links stored in an array for easy maintenance.
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "News", href: "/news" },
+  { label: "Products", href: "/rented-items" },
   { label: "Subscription", href: "/payments" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },

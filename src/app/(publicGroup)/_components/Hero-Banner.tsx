@@ -139,7 +139,7 @@ export default function Banner() {
             initial="enter"
             animate="center"
             exit="exit"
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-8"
+            className="absolute inset-0 flex flex-col items-center justify-end text-center p-12 md:p-22"
           >
            
 
@@ -148,7 +148,7 @@ export default function Banner() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <Link href="/rent-Items">
+              <Link href="/rented-items">
                 <Button size="lg" className="px-6 md:px-8 text-base md:text-lg">
                   {heroSlides[currentSlide].buttonText}
                 </Button>
