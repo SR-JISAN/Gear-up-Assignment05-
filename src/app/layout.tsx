@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Nunito_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/share/Navbar";
+
 
 const nunitoSans = Nunito_Sans({subsets:['latin'],variable:'--font-sans'});
 
@@ -21,8 +21,8 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", "font-sans", nunitoSans.variable)}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar/>
+      <body className="min-h-full w-full flex flex-col">
+        
         {children}
       </body>
     </html>

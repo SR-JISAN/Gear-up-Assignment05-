@@ -1,10 +1,12 @@
 import React from 'react';
 
-const authLayout = ({children,}: Readonly<{children: React.ReactNode;}>) => {
-    return ( 
-        <div>
-            {children}
-        </div>       
+const authLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) => {
+   
+    return (
+      <div className="max-w-full mx-auto ">
+        
+        {children}
+      </div>
     );
 };
 

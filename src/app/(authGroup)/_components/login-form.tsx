@@ -20,8 +20,8 @@ function LoginForm() {
   }, [state]);
   return (
     <div>
-      <form className="space-y-3" action={action}>
-        <Card className="space-y-3 p-4">
+      <form className="space-y-3 " action={action}>
+        <Card className="space-y-3 min-h-full bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 p-4">
           <Input
             name="email"
             type="email"
