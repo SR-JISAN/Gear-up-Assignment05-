@@ -80,6 +80,7 @@ type TNavUser = {
 };
 
 export function Navbar({ user }: TNavUser) {
+  
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -194,7 +195,7 @@ function UserMenu({ user }: TNavUser) {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full">
               <Avatar className="size-8">
-                <AvatarImage src={user?.data.profile.profileImage} />
+                <AvatarImage src={user?.data?.profile?.profileImage} />
                 <AvatarFallback>
                   {user?.data?.name
                     ?.split(" ")

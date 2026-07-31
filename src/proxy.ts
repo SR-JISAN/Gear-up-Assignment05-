@@ -7,11 +7,12 @@ import { jwtUtils } from "./utils/jwt";
 import { newAccessToken } from "./service/refreshToken";
 
 const AUTH_ROUTE = ["/login", "/register"];
-const PUBLIC_ROUTE = ["/", "/home", "/rented-items"];
+const PUBLIC_ROUTE = ["/", "/home", "/products"];
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const cookieStore = await cookies();
+  
 
   let accessToken = request.cookies.get("accessToken")?.value;
   const refreshToken = request.cookies.get("refreshToken")?.value;

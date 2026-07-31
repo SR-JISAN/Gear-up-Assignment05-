@@ -40,3 +40,18 @@ export const getCategories = async () => {
 
   return res.json();
 };
+
+export const getSingleProduct = async (id: string) => {
+  const res = await fetch(
+    `${process.env.BACKEND_APP_URL}/api/products/single/${id}`,
+    {
+      cache: "no-store",
+    },
+  );
+  console.log("Fetching:", res);
+  if (!res.ok) {
+    throw new Error("Failed to fetch product");
+  }
+
+  return res.json();
+};

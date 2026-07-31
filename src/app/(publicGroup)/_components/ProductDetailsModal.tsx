@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Package, Tag } from "lucide-react";
+import Link from "next/link";
 
 interface Product {
   id: number;
@@ -42,7 +43,6 @@ export default function ProductDetailsModal({ products }: { products: Product })
 
       <DialogContent className=" p-0 md:h-[65vw] lg:h-[40vw] md:max-w-6xl! md:w-[50vw] lg:w-[60vw]">
         <div className="grid lg:grid-cols-2">
-          
           <div className="relative min-h-60 md:min-h-100.5 bg-muted p-4">
             <Image
               src={products.product_image || "/placeholder.png"}
@@ -127,15 +127,18 @@ export default function ProductDetailsModal({ products }: { products: Product })
               </div>
             </div>
 
-            <Button
-              className="mt-8 h-12 text-base"
-              disabled={
-                products.stock === 0 || products.availability === "OUT_OF_STOCK"
-              }
-            >
-              <ShoppingCart className="mr-2 h-5 w-5" />
-              Rent Now
-            </Button>
+            <Link href={`/orderItems/${products.id}`}>
+              <Button
+                className="mt-8 h-12 text-base w-full"
+                disabled={
+                  products.stock === 0 ||
+                  products.availability === "OUT_OF_STOCK"
+                }
+              >
+                <ShoppingCart className="mr-2 h-5 w-5" />
+                Rent Now
+              </Button>
+            </Link>
           </div>
         </div>
       </DialogContent>

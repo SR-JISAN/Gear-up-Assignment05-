@@ -1,3 +1,4 @@
+import Footer from '@/components/share/Footer';
 import { Navbar } from '@/components/share/Navbar';
 import { userInfo } from '@/service/userInfo';
 
@@ -9,6 +10,7 @@ const authLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) =
       <div className="max-w-full  ">
         <Navbar user={user} />
         {children}
+        <Footer/>
       </div>
     );
 };
