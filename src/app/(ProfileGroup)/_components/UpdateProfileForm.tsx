@@ -21,6 +21,7 @@ const initialState = {
 };
 
 export default function UpdateProfileForm({ user, close }: Props) {
+   console.log(user);
   const [state, action, pending] = useActionState(
     updateProfileAction,
     initialState,
@@ -56,7 +57,7 @@ export default function UpdateProfileForm({ user, close }: Props) {
       <div>
         <label>Bio</label>
 
-        <Input name="address" defaultValue={user.profile.bio ?? ""} />
+        <Input name="bio" defaultValue={user.profile.bio ?? ""} />
       </div>
 
       <div>

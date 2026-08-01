@@ -110,7 +110,7 @@ export default function ProductTable({ products }: ProductTableProps) {
                   <div className="flex justify-end gap-2">
                     <Button asChild size="icon" variant="outline">
                       <Link
-                        href={`/dashboard/provider/updateProduct/${product.id}`}
+                        href={`/updateProduct/${product.id}`}
                       >
                         <Pencil className="h-4 w-4" />
                       </Link>

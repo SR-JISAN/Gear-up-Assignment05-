@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default function ProfileCard({ user }: Props) {
+    
   return (
     <Card>
       <CardContent className="flex flex-col items-center p-8">

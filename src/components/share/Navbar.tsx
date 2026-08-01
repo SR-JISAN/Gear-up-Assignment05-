@@ -54,6 +54,7 @@ export function Navbar({ user }: TNavUser) {
     ...(user?.data?.role === "PROVIDER"
       ? [{ label: "Add Products", href: "/postProduct" }]
       : []),
+    
     ...(user?.data?.role === "ADMIN"
       ? [{ label: "Categories", href: "/categories" }]
       : []),
@@ -167,12 +168,12 @@ function UserMenu({ user }: TNavUser) {
 
       icon: LayoutDashboard,
     },
-
-    {
-      label: "Payments History",
-      href: "/payments-history",
-      icon: CreditCard,
-    },
+    ...(user?.data?.role === "CUSTOMER"
+      ? [{ label: "Payments History", href: "/payments-history", icon: CreditCard }]
+      : []),
+    ...(user?.data?.role === "ADMIN"
+      ? [{ label: "Payments History", href: "/payments-history", icon: CreditCard }]
+      : []),
 
     {
       label: "Notifications",
