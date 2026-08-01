@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 import { IUser } from "../_actions/getProfileAction";
+import UpdateProfileDialog from "./UpdateProfileDialog";
 
 interface Props {
   user: IUser;
@@ -16,10 +17,7 @@ export default function PersonalInformation({ user }: Props) {
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Personal Information</CardTitle>
 
-        <Button variant="outline" size="sm">
-          <Pencil className="mr-2 h-4 w-4" />
-          Edit Profile
-        </Button>
+        <UpdateProfileDialog user={user} />
       </CardHeader>
 
       <CardContent className="space-y-6">

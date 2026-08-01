@@ -25,7 +25,7 @@ export async function updateProfileAction(
     };
 
     const res = await fetch(
-      `${process.env.BACKEND_APP_URL}/api/users/profile`,
+      `${process.env.BACKEND_APP_URL}/api/users/update-profile`,
       {
         method: "PATCH",
         headers: {
