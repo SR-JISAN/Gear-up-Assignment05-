@@ -1,39 +1,26 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { IPayment } from "./paymentType";
 
-export interface IOrder {
-  id: number;
-  orderStatus:
-    | "PROCESSING"
-    | "CONFIRM"
-    | "PAID"
-    | "PICKED_UP"
-    | "RETURNED"
-    | "CANCELLED";
+
+
+export interface IGetPaymentsResponse {
+  success: boolean;
+  message: string;
+  data: IPayment[];
 }
 
-export interface IPayment {
-  id: number;
-  amount: string;
-  gateway: string;
-  status: "PENDING" | "SUCCESS" | "FAILED";
-  transactionId: string;
-  paidAt: string | null;
-  createdAt: string;
-  order: IOrder;
-}
-
-export async function getPayments(): Promise<IPayment[]> {
+export async function getPayments(): Promise<IGetPaymentsResponse> {
   const cookieStore = await cookies();
 
-  const token = cookieStore.get("accessToken")?.value;
+  const accessToken = cookieStore.get("accessToken")?.value;
 
   const res = await fetch(
     `${process.env.BACKEND_APP_URL}/api/payments/history`,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: accessToken!,
       },
       cache: "no-store",
     },
@@ -42,8 +29,16 @@ export async function getPayments(): Promise<IPayment[]> {
   const result = await res.json();
 
   if (!res.ok || !result.success) {
-    throw new Error(result.message);
+    return {
+      success: false,
+      message: result.message,
+      data: [],
+    };
   }
 
-  return result.data;
+  return {
+    success: true,
+    message: result.message,
+    data: result.data,
+  };
 }

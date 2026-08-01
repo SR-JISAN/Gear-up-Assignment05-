@@ -4,25 +4,28 @@ import Link from "next/link";
 import { CreditCard, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { IPayment } from "../_actions/paymentType";
 
-import { IPayment } from "../_actions/getPaymentsAction";
 
 interface Props {
   payment: IPayment;
+  role: "ADMIN" | "CUSTOMER" | "PROVIDER";
 }
 
-export default function PaymentActionsComponents({ payment }: Props) {
-  
-  if (payment.order.orderStatus === "CANCELLED") {
+export default function PaymentActionsComponents({ payment, role }: Props) {
+
+  if (role === "ADMIN") {
     return null;
   }
 
- 
+  if (payment.status === "CANCELLED") {
+    return null;
+  }
+
   if (payment.status === "SUCCESS") {
     return null;
   }
 
-  // Pending payment
   if (payment.status === "PENDING") {
     return (
       <Button asChild size="sm">
@@ -34,7 +37,6 @@ export default function PaymentActionsComponents({ payment }: Props) {
     );
   }
 
-  
   return (
     <Button asChild size="sm">
       <Link href={`/payments?orderId=${payment.order.id}`}>

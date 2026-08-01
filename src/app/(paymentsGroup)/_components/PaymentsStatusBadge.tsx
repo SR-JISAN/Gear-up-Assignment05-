@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 
 interface Props {
-  status: "SUCCESS" | "FAILED" | "PENDING";
+  status: "SUCCESS" | "FAILED" | "PENDING" | "CANCELLED";
 }
 
 export default function PaymentStatusBadge({ status }: Props) {
@@ -11,6 +11,9 @@ export default function PaymentStatusBadge({ status }: Props) {
 
     case "FAILED":
       return <Badge variant="destructive">Failed</Badge>;
+
+    case "CANCELLED":
+      return <Badge className="bg-gray-500">Cancelled</Badge>;
 
     default:
       return <Badge variant="secondary">Pending</Badge>;
