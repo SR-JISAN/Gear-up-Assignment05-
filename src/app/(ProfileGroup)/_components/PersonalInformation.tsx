@@ -1,8 +1,8 @@
-import { Mail, MapPin, Phone, User, Pencil } from "lucide-react";
+import { Mail, MapPin, Phone, User } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Button } from "@/components/ui/button";
+
 
 import { IUser } from "../_actions/getProfileAction";
 import UpdateProfileDialog from "./UpdateProfileDialog";

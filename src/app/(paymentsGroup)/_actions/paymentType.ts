@@ -20,4 +20,5 @@ export interface IPayment {
   transactionId: string;
   paidAt: string | null;
   order: IOrder;
+  customerName: string;
 }

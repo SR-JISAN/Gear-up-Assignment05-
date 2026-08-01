@@ -49,12 +49,18 @@ export function Navbar({ user }: TNavUser) {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
+    { label: "All Orders", href: "/orderHistory" },
 
     ...(user?.data?.role === "PROVIDER"
       ? [{ label: "Add Products", href: "/postProduct" }]
       : []),
-    { label: "All Orders", href: "/orderHistory" },
-    { label: "Contact", href: "/contact" },
+    ...(user?.data?.role === "ADMIN"
+      ? [{ label: "Categories", href: "/categories" }]
+      : []),
+    ...(user?.data?.role === "ADMIN"
+      ? [{ label: "Add Categories", href: "/postCategories" }]
+      : []),
+    
   ];
   const pathname = usePathname();
 

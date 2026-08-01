@@ -32,7 +32,6 @@ export const getCategories = async () => {
       cache: "no-store",
     },
   );
-   console.log("Fetching:", res);
 
   if (!res.ok) {
     throw new Error("Failed to fetch categories");
@@ -48,7 +47,6 @@ export const getSingleProduct = async (id: string) => {
       cache: "no-store",
     },
   );
-  console.log("Fetching:", res);
   if (!res.ok) {
     throw new Error("Failed to fetch product");
   }

@@ -32,7 +32,7 @@ export default function PaymentHistoryTable({ payments, role }: Props) {
             <TableHead>Amount</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Gateway</TableHead>
-            <TableHead>Date</TableHead>
+            <TableHead>Payment Date</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -52,16 +52,17 @@ export default function PaymentHistoryTable({ payments, role }: Props) {
               <TableRow key={payment.id}>
                 <TableCell>#{payment.order.id}</TableCell>
 
-                <TableCell>৳{payment.amount}</TableCell>
+                <TableCell>${payment.amount}</TableCell>
 
                 <TableCell>
                   <PaymentStatusBadge status={payment.status} />
                 </TableCell>
+               
 
                 <TableCell>{payment.gateway}</TableCell>
 
                 <TableCell>
-                  {payment.paidAt ? new Date(payment.paidAt).toLocaleDateString() : "N/A"}
+                  {payment.paidAt? new Date(payment.paidAt).toLocaleDateString() : "N/A"}
                 </TableCell>
 
                 <TableCell className="text-right">
