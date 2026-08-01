@@ -6,13 +6,20 @@ export interface IUser {
   id: string;
   name: string;
   email: string;
-  phone: string | null;
+  phone_number: string | null;
   address: string | null;
-  profileImage: string | null;
   role: "CUSTOMER" | "PROVIDER" | "ADMIN";
   customer_status: "ACTIVE" | "BLOCKED";
   stripCustomerId: string | null;
   createdAt: string;
+  profile: {
+    id: string;
+    bio: string;
+    profileImage: string | null;
+    userId: string;
+    created_at: string;
+    updated_at: string;
+  };
 }
 
 export async function getProfile(): Promise<IUser> {

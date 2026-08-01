@@ -19,9 +19,12 @@ export async function updateProfileAction(
 
     const body = {
       name: formData.get("name"),
-      phone: formData.get("phone"),
-      address: formData.get("address"),
-      profileImage: formData.get("profileImage"),
+      phone_number: formData.get("phone_number"),
+      
+      profile: {
+        profileImage: formData.get("profileImage"),
+        bio: formData.get("bio"),
+      },
     };
 
     const res = await fetch(

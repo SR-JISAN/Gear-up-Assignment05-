@@ -1,16 +1,34 @@
+"use server";
+
 import { cookies } from "next/headers";
 
-export const getCustomerDashboard = async () => {
-  const cookieStore = await cookies();
+export async function getCustomerDashboard() {
+  try {
+    const cookieStore = await cookies();
 
-  const token = cookieStore.get("accessToken")?.value;
+    const token = cookieStore.get("accessToken")?.value;
+    console.log(token);
 
-  const res = await fetch(`${process.env.BACKEND_APP_URL}/api/orders/all`, {
-    headers: {
-      Authorization: token ?? "",
-    },
-    cache: "no-store",
-  });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_APP_URL}/api/dashboard/customer`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      },
+    );
 
-  return res.json();
-};
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
+    return data.data;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
+}

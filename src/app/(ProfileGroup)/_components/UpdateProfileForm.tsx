@@ -50,19 +50,19 @@ export default function UpdateProfileForm({ user, close }: Props) {
       <div>
         <label>Phone</label>
 
-        <Input name="phone" defaultValue={user.phone ?? ""} />
+        <Input name="phone_number" defaultValue={user.phone_number ?? ""} />
       </div>
 
       <div>
-        <label>Address</label>
+        <label>Bio</label>
 
-        <Input name="address" defaultValue={user.address ?? ""} />
+        <Input name="address" defaultValue={user.profile.bio ?? ""} />
       </div>
 
       <div>
         <label>Profile Image</label>
 
-        <Input name="profileImage" defaultValue={user.profileImage ?? ""} />
+        <Input name="profileImage" defaultValue={user.profile.profileImage ?? ""} />
       </div>
 
       <Button className="w-full" disabled={pending}>

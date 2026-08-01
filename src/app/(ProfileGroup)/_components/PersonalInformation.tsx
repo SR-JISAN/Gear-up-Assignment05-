@@ -47,7 +47,7 @@ export default function PersonalInformation({ user }: Props) {
           <div>
             <p className="text-sm text-muted-foreground">Phone Number</p>
 
-            <p className="font-medium">{user.phone || "Not Added"}</p>
+            <p className="font-medium">{user.phone_number || "Not Added"}</p>
           </div>
         </div>
 
@@ -55,9 +55,9 @@ export default function PersonalInformation({ user }: Props) {
           <MapPin className="h-5 w-5 text-primary" />
 
           <div>
-            <p className="text-sm text-muted-foreground">Address</p>
+            <p className="text-sm text-muted-foreground">BIO</p>
 
-            <p className="font-medium">{user.address || "Not Added"}</p>
+            <p className="font-medium">{user.profile.bio || "Not Added"}</p>
           </div>
         </div>
       </CardContent>

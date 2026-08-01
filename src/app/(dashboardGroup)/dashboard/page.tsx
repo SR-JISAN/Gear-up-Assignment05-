@@ -1,26 +1,45 @@
-import ActiveRentals from "../_components/ActiveRentals";
-import DashboardStats from "../_components/DashboardStats";
-import ProfileCard from "../_components/ProfileCard";
-import QuickActions from "../_components/QuickActions";
-import RentalHistory from "../_components/RentalHistory";
+import { getCustomerDashboard } from "../_actions/dashboardActions";
+import { CustomerDashboardData } from "../_actions/dashboardType";
+import CustomerDashboard from "../_components/customer-dashboard";
 
 
-export default function UserDashboardPage() {
+export default async function CustomerDashboardPage() {
+  const response = await getCustomerDashboard();
+
+  if (!response) {
+    return (
+      <main className="container mx-auto py-10">
+        <div
+          className="
+          flex
+          min-h-100
+          items-center
+          justify-center
+          rounded-xl
+          border
+          "
+        >
+          <p className="text-muted-foreground">Unable to load dashboard data</p>
+        </div>
+      </main>
+    );
+  }
+
+  const dashboardData: CustomerDashboardData = {
+    totalOrders: response.totalOrders ?? 0,
+
+    activeOrders: response.activeOrders ?? 0,
+
+    totalPayment: response.totalPayment ?? 0,
+
+    products: response.products ?? 0,
+
+    recentPayments: response.recentPayments ?? [],
+  };
+
   return (
-    <div className="space-y-8">
-      <DashboardStats />
-
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="space-y-6 lg:col-span-2">
-          <ActiveRentals />
-          <RentalHistory />
-        </div>
-
-        <div className="space-y-6">
-          <ProfileCard />
-          <QuickActions />
-        </div>
-      </div>
-    </div>
+    <main className="container mx-auto py-8">
+      <CustomerDashboard data={dashboardData} />
+    </main>
   );
 }
