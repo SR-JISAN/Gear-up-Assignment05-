@@ -6,6 +6,7 @@ import React from 'react';
 
 const authLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) => {
     const user = await userInfo();
+    
     return (
       <div className="max-w-full  ">
         <Navbar user={user} />

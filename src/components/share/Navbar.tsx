@@ -30,12 +30,13 @@ import {
 import { toast } from "sonner";
 import { logout } from "@/service/logout";
 import Image from "next/image";
+import { IUser } from "@/service/interfaceUser";
 
 // Nav links stored in an array for easy maintenance.
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
-  { label: "Subscription", href: "/payments" },
+  { label: "MY-Orders", href: "/orderHistory" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
 ];
@@ -49,31 +50,6 @@ const userMenuItems = [
   { label: "Settings", href: "/settings", icon: Settings },
   { label: "Support", href: "/support", icon: LifeBuoy },
 ];
-
-interface IUser {
-  success: true;
-  statusCode: number;
-  message: string;
-  data: {
-    id: string;
-    name: string;
-    email: string;
-    phone_number: string;
-    role: string;
-    customer_status: string;
-    stripCustomerId: string;
-    created_at: string;
-    updated_at: string;
-    profile: {
-      id: string;
-      bio?: string;
-      profileImage: string;
-      userId: string;
-      created_at: string;
-      updated_at: string;
-    };
-  };
-}
 
 type TNavUser = {
   user: IUser;
