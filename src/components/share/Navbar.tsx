@@ -45,7 +45,7 @@ const navLinks = [
 const userMenuItems = [
   { label: "Profile", href: "/profile", icon: User },
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { label: "Billing", href: "/billing", icon: CreditCard },
+  { label: "Payments History", href: "/payments-history", icon: CreditCard },
   { label: "Notifications", href: "/notifications", icon: Bell },
   { label: "Settings", href: "/settings", icon: Settings },
   { label: "Support", href: "/support", icon: LifeBuoy },
