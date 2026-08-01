@@ -1,6 +1,6 @@
-import Link from "next/link";
+
 import { getProducts } from "../_actions/productData";
-import { Button } from "@/components/ui/button";
+
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import ProductDetailsModal from "./ProductDetailsModal";
@@ -123,10 +123,6 @@ export default async function Products({
                 {item.availability}
               </span>
             </div>
-
-            {/* <Link href={`/products/${item.id}`}>
-              <Button className="mt-4 w-full">View Details</Button>
-            </Link> */}
             <ProductDetailsModal products={item} />
           </div>
         </Card>

@@ -30,7 +30,7 @@ export interface AdminUser {
 
 export interface ProviderProduct {
   id: string;
-  name: string;
+  title: string;
   brand: string;
   price_per_day: number;
   availability: string;
