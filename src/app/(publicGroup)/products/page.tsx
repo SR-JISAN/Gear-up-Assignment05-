@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import ProductFilters from "../_components/ProductFilters";
 import Products from "../_components/Products";
 import ProductsSkeleton from "../_components/ProductsSkeleton";
-import Footer from "@/components/share/Footer";
+
 
 
 

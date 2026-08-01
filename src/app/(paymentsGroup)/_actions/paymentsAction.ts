@@ -66,6 +66,7 @@ export const paymentAction = async (
       checkoutUrl: result.data.checkoutUrl,
     };
   } catch (error) {
+    console.error(error);
     return {
       success: false,
       message: "Something went wrong",
