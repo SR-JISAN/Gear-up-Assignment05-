@@ -18,7 +18,13 @@ export interface IRentalItem {
 export interface IOrder {
   id: number;
   totalAmount: string;
-  orderStatus: "PROCESSING" | "PAID" | "CANCELLED" | "PICKED_UP" | "RETURNED";
+  orderStatus:
+    | "PROCESSING"
+    | "CONFIRM"
+    | "PAID"
+    | "PICKED_UP"
+    | "RETURNED"
+    | "CANCELLED";
 
   pickUpAddress: string;
   pickUpDate: string | null;

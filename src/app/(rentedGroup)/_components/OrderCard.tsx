@@ -5,6 +5,8 @@ import { Calendar, CreditCard, Eye, MapPin, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import OrderStatusBadge from "./OrderStatusBadge";
 import { IOrder } from "../_actions/order";
+import CancelOrderButton from "./CancelOrderButton";
+import PaymentButton from "@/app/(paymentsGroup)/_components/PaymentButton";
 
 interface OrderCardProps {
   order: IOrder;
@@ -61,15 +63,22 @@ export default function OrderCard({ order }: OrderCardProps) {
           </Link>
         </Button>
 
-        {(order.orderStatus === "PROCESSING" ||
-          order.orderStatus === "CANCELLED") && (
-          <Button asChild>
-            <Link href={`/payments?orderId=${order.id}`}>
-              <CreditCard className="mr-2 h-4 w-4" />
+       
+        {order.orderStatus === "PROCESSING" && (
+          <>
+            {(order.orderStatus === "PROCESSING" ||
+              order.orderStatus === "CANCELLED") && (
+              <Button asChild>
+                <Link href={`/payments?orderId=${order.id}`}>
+                  <CreditCard className="mr-2 h-4 w-4" />
 
-              {order.orderStatus === "CANCELLED" ? "Re-Pay" : "Pay Now "}
-            </Link>
-          </Button>
+                  {order.orderStatus === "PROCESSING" ? "Re-Pay" : "Pay Now "}
+                </Link>
+              </Button>
+            )}
+
+            <CancelOrderButton orderId={order.id} />
+          </>
         )}
       </div>
     </div>
