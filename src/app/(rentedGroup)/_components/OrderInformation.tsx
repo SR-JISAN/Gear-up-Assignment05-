@@ -12,7 +12,7 @@ export default function OrderInformation({ order }: Props) {
 
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className=" gap-6 ">
      
 
       {order.customer && (

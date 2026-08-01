@@ -26,11 +26,36 @@ const initialState = {
   message: "",
 };
 
-export default function UpdateStatusForm({
-  orderId,
-  currentStatus,
-  role,
-}: Props) {
+const statusOptions: Record<
+  string,
+  {
+    value: string;
+    label: string;
+  }[]
+> = {
+  PLACED: [
+    {
+      value: "CONFIRMED",
+      label: "Confirm",
+    },
+  ],
+
+  PAID: [
+    {
+      value: "PICKED_UP",
+      label: "Mark Picked Up",
+    },
+  ],
+
+  PICKED_UP: [
+    {
+      value: "RETURNED",
+      label: "Mark Returned",
+    },
+  ],
+};
+
+export default function UpdateStatusForm({ orderId, currentStatus }: Props) {
   const router = useRouter();
 
   const [state, action, pending] = useActionState(
@@ -41,38 +66,45 @@ export default function UpdateStatusForm({
   useEffect(() => {
     if (!state.message) return;
 
-    if (!state.success) {
+    if (state.success) {
+      toast.success(state.message);
+      router.refresh();
+    } else {
       toast.error(state.message);
-      return;
     }
-
-    toast.success(state.message);
-    router.refresh();
   }, [state, router]);
+
+  const options = statusOptions[currentStatus] || [];
 
   return (
     <form action={action} className="space-y-4">
       <input type="hidden" name="orderId" value={orderId} />
 
-      <Select name="orderStatus" defaultValue={currentStatus}>
-        <SelectTrigger>
+      <Select name="orderStatus" disabled={options.length === 0 || pending}>
+        <SelectTrigger className="w-full">
           <SelectValue placeholder="Select Status" />
         </SelectTrigger>
 
         <SelectContent>
-          <SelectItem value="CONFIRM">Confirm</SelectItem>
-
-          <SelectItem value="PICKED_UP">Picked Up</SelectItem>
-
-          <SelectItem value="RETURNED">Returned</SelectItem>
-
-          {role === "ADMIN" && (
-            <SelectItem value="CANCELLED">Cancelled</SelectItem>
+          {options.length > 0 ? (
+            options.map((status) => (
+              <SelectItem key={status.value} value={status.value}>
+                {status.label}
+              </SelectItem>
+            ))
+          ) : (
+            <SelectItem value="NO_ACTION" disabled>
+              No Action Available
+            </SelectItem>
           )}
         </SelectContent>
       </Select>
 
-      <Button type="submit" disabled={pending} className="w-full">
+      <Button
+        type="submit"
+        className="w-full"
+        disabled={pending || options.length === 0}
+      >
         {pending ? "Updating..." : "Update Status"}
       </Button>
     </form>

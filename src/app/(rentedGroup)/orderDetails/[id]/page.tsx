@@ -44,7 +44,7 @@ export default async function OrderDetailsPage({ params }: Props) {
           <OrderInformation order={order} />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 text-center">
           {/* CUSTOMER */}
 
           {role === "CUSTOMER" && order.orderStatus === "PROCESSING" && (

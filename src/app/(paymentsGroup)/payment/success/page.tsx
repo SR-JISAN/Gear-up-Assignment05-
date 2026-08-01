@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 interface Props {
   searchParams: Promise<{
     session_id?: string;
+    
   }>;
 }
 
@@ -32,7 +33,7 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
         )}
 
         <div className="mt-8 flex flex-col gap-3">
-          <Link href="/dashboard/customer/orders">
+          <Link href="/orderHistory">
             <Button className="w-full">View My Orders</Button>
           </Link>
 

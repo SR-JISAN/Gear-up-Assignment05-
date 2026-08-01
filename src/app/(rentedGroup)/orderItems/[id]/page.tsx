@@ -2,9 +2,7 @@ import { getSingleProduct } from "@/app/(publicGroup)/_actions/productData";
 import OrderForm from "../../_components/OrderForm";
 import OrderSummary from "../../_components/OrderSummary";
 import Footer from "@/components/share/Footer";
-import RentalInfo from "../../_components/RentalInfo";
-import UpdateStatusForm from "../../_components/UpdateStatusForm";
-import OrderInformation from "../../_components/OrderInformation";
+
 
 
 interface Props {

@@ -62,24 +62,6 @@ export default function OrderCard({ order }: OrderCardProps) {
             Details
           </Link>
         </Button>
-
-       
-        {order.orderStatus === "PROCESSING" && (
-          <>
-            {(order.orderStatus === "PROCESSING" ||
-              order.orderStatus === "CANCELLED") && (
-              <Button asChild>
-                <Link href={`/payments?orderId=${order.id}`}>
-                  <CreditCard className="mr-2 h-4 w-4" />
-
-                  {order.orderStatus === "PROCESSING" ? "Re-Pay" : "Pay Now "}
-                </Link>
-              </Button>
-            )}
-
-            <CancelOrderButton orderId={order.id} />
-          </>
-        )}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { IOrder } from "../_actions/getSingleOrderAction";
+import { IOrder, IRentalItem } from "../_actions/getSingleOrderAction";
 
 interface Props {
   order: IOrder;
@@ -16,7 +16,7 @@ export default function OrderDetailsSummary({ order }: Props) {
         <h2 className="mb-6 text-2xl font-bold">Order Summary</h2>
 
         <div className="space-y-5">
-          {order.rentalItem.map((item) => (
+          {order.rentalItem.map((item : IRentalItem) => (
             <div
               key={item.id}
               className="flex gap-4 border-b pb-5 last:border-none"
@@ -32,9 +32,7 @@ export default function OrderDetailsSummary({ order }: Props) {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg">{item.product.title}</h3>
 
-                {/* <p className="text-sm text-muted-foreground">
-                  {item.product.category.name}
-                </p> */}
+                
 
                 <div className="mt-3 space-y-1 text-sm">
                   <p>
