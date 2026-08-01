@@ -10,12 +10,12 @@ interface Props {
   startDate: string;
   endDate: string;
   quantity: number;
-  notes: string;
+  pickUpAddress: string;
 
   setStartDate: Dispatch<SetStateAction<string>>;
   setEndDate: Dispatch<SetStateAction<string>>;
   setQuantity: Dispatch<SetStateAction<number>>;
-  setNotes: Dispatch<SetStateAction<string>>;
+  setPickUpAddress: Dispatch<SetStateAction<string>>;
 
   stock: number;
 }
@@ -24,11 +24,11 @@ export default function RentalInfo({
   startDate,
   endDate,
   quantity,
-  notes,
+  pickUpAddress,
   setStartDate,
   setEndDate,
   setQuantity,
-  setNotes,
+  setPickUpAddress,
   stock,
 }: Props) {
   return (
@@ -54,7 +54,6 @@ export default function RentalInfo({
           />
         </div>
 
-
         <div className="space-y-2">
           <Label>End Date</Label>
 
@@ -66,7 +65,6 @@ export default function RentalInfo({
           />
         </div>
       </div>
-
 
       <div className="space-y-2">
         <Label>Quantity</Label>
@@ -84,15 +82,15 @@ export default function RentalInfo({
         </p>
       </div>
 
-
       <div className="space-y-2">
-        <Label>Additional Notes</Label>
+        <Label>Pick Up Address</Label>
 
         <Textarea
           rows={5}
-          value={notes}
-          placeholder="Any special instruction..."
-          onChange={(e) => setNotes(e.target.value)}
+          value={pickUpAddress}
+          placeholder="Enter pickup address"
+          onChange={(e) => setPickUpAddress(e.target.value)}
+          required
         />
       </div>
     </div>

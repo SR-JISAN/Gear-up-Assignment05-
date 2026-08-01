@@ -1,14 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useActionState, useMemo, useState } from "react";
 
 import RentalInfo from "./RentalInfo";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+import { createOrderAction } from "../_actions/order.actions";
+import { toast } from "sonner";
+import { useEffect } from "react";
 
 interface Product {
   id: number;
@@ -35,12 +38,30 @@ interface Props {
   product: Product;
 }
 
+const initialState = {
+  success: false,
+  message: "",
+};
+
 export default function OrderForm({ product }: Props) {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [notes, setNotes] = useState("");
+  const [pickUpAddress, setPickUpAddress] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("STRIPE");
+
+  const [state, action, pending] = useActionState(
+    createOrderAction,
+    initialState,
+  );
+
+  useEffect(() => {
+    if (!state.message) return;
+
+    if (!state.success) {
+      toast.error(state.message);
+    }
+  }, [state]);
 
   const rentalDays = useMemo(() => {
     if (!startDate || !endDate) return 0;
@@ -57,33 +78,28 @@ export default function OrderForm({ product }: Props) {
     return Number(product.price_per_day) * rentalDays * quantity;
   }, [product.price_per_day, rentalDays, quantity]);
 
-  const handleSubmit = () => {
-    console.log({
-      productId: product.id,
-      startDate,
-      endDate,
-      quantity,
-      notes,
-      paymentMethod,
-      total,
-    });
-
-  };
-
   return (
-    <div className="space-y-6">
+    <form action={action} className="space-y-6">
+      {/* Hidden Inputs */}
+      <input type="hidden" name="productId" value={product.id} />
+      <input type="hidden" name="startDate" value={startDate} />
+      <input type="hidden" name="endDate" value={endDate} />
+      <input type="hidden" name="quantity" value={quantity} />
+      <input type="hidden" name="pickUpAddress" value={pickUpAddress} />
+      <input type="hidden" name="paymentMethod" value={paymentMethod} />
+      <input type="hidden" name="totalAmount" value={total} />
+
       <RentalInfo
         startDate={startDate}
         endDate={endDate}
         quantity={quantity}
-        notes={notes}
+        pickUpAddress={pickUpAddress}
         stock={product.stock}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
         setQuantity={setQuantity}
-        setNotes={setNotes}
+        setPickUpAddress={setPickUpAddress}
       />
-
 
       <Card>
         <CardHeader>
@@ -92,21 +108,13 @@ export default function OrderForm({ product }: Props) {
 
         <CardContent>
           <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center gap-2">
               <RadioGroupItem value="STRIPE" id="stripe" />
-
               <Label htmlFor="stripe">Stripe</Label>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="CASH" id="cash" />
-
-              <Label htmlFor="cash">Cash on Delivery</Label>
             </div>
           </RadioGroup>
         </CardContent>
       </Card>
-
 
       <Card>
         <CardHeader>
@@ -116,19 +124,16 @@ export default function OrderForm({ product }: Props) {
         <CardContent className="space-y-3">
           <div className="flex justify-between">
             <span>Price / Day</span>
-
             <span>${product.price_per_day}</span>
           </div>
 
           <div className="flex justify-between">
             <span>Rental Days</span>
-
             <span>{rentalDays}</span>
           </div>
 
           <div className="flex justify-between">
             <span>Quantity</span>
-
             <span>{quantity}</span>
           </div>
 
@@ -136,20 +141,18 @@ export default function OrderForm({ product }: Props) {
 
           <div className="flex justify-between text-xl font-bold">
             <span>Total</span>
-
             <span>${total}</span>
           </div>
         </CardContent>
       </Card>
 
       <Button
+        type="submit"
         className="w-full h-12"
-        size="lg"
-        onClick={handleSubmit}
-        disabled={rentalDays === 0 || product.stock === 0}
+        disabled={pending || rentalDays === 0 || product.stock === 0}
       >
-        Rent Now
+        {pending ? "Creating Order..." : "Rent Now"}
       </Button>
-    </div>
+    </form>
   );
 }
