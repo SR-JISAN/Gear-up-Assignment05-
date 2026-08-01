@@ -1,3 +1,5 @@
+import { IUser } from "@/service/interfaceUser";
+
 export interface IProduct {
   id: number;
   title: string;
@@ -13,6 +15,13 @@ export interface IRentalItem {
   totalDays: number;
   subTotal: string;
   product: IProduct;
+}
+export interface IPayment {
+  id: number;
+  gateway: string;
+  status: string;
+  transactionId: string;
+  paidAt: string | null;
 }
 
 export interface IOrder {
@@ -32,5 +41,7 @@ export interface IOrder {
   customerId: string;
   createdAt: string;
 
+  customer?: IUser;
   rentalItem: IRentalItem[];
+
 }

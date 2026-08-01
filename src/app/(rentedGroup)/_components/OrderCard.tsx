@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import OrderStatusBadge from "./OrderStatusBadge";
 import { IOrder } from "../_actions/order";
 import CancelOrderButton from "./CancelOrderButton";
-import PaymentButton from "@/app/(paymentsGroup)/_components/PaymentButton";
+
 
 interface OrderCardProps {
   order: IOrder;
@@ -57,7 +57,7 @@ export default function OrderCard({ order }: OrderCardProps) {
 
       <div className="mt-6 flex gap-3 justify-end">
         <Button variant="outline" asChild>
-          <Link href={`/dashboard/customer/orders/${order.id}`}>
+          <Link href={`/orderDetails/${order.id}`}>
             <Eye className="mr-2 h-4 w-4" />
             Details
           </Link>
