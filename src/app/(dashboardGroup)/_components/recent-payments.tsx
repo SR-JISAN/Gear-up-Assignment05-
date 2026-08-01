@@ -27,7 +27,7 @@ export default function RecentPayments({ payments }: { payments: Payment[] }) {
                 "
             >
               <div>
-                <p className="font-medium">Payment #{payment.id}</p>
+                <p className="font-medium">Payment : {payment.id}</p>
 
                 <p className="text-sm text-muted-foreground">
                   {new Date(payment.createdAt).toLocaleDateString()}

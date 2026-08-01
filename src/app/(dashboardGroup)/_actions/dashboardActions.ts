@@ -7,7 +7,6 @@ export async function getCustomerDashboard() {
     const cookieStore = await cookies();
 
     const token = cookieStore.get("accessToken")?.value;
-    console.log(token);
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_APP_URL}/api/dashboard/customer`,

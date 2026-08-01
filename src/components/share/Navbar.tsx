@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+
 import {
   Menu,
   X,
@@ -17,7 +18,9 @@ import {
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,46 +33,40 @@ import {
 import { toast } from "sonner";
 import { logout } from "@/service/logout";
 import Image from "next/image";
+
 import { IUser } from "@/service/interfaceUser";
 
-// Nav links stored in an array for easy maintenance.
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "MY-Orders", href: "/orderHistory" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact", href: "/contact" },
-];
+// Navbar links
 
-// User menu items in an array for easy maintenance.
-const userMenuItems = [
-  { label: "Profile", href: "/profile", icon: User },
-  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { label: "Payments History", href: "/payments-history", icon: CreditCard },
-  { label: "Notifications", href: "/notifications", icon: Bell },
-  { label: "Settings", href: "/settings", icon: Settings },
-  { label: "Support", href: "/support", icon: LifeBuoy },
-];
+
 
 type TNavUser = {
   user: IUser;
 };
 
 export function Navbar({ user }: TNavUser) {
-  
+
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+
+    ...(user?.data?.role === "PROVIDER"
+      ? [{ label: "Add Products", href: "/postProduct" }]
+      : []),
+    { label: "All Orders", href: "/orderHistory" },
+    { label: "Contact", href: "/contact" },
+  ];
   const pathname = usePathname();
+
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-semibold tracking-tight"
-        >
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
             alt="Gear Up Logo"
@@ -79,24 +76,27 @@ export function Navbar({ user }: TNavUser) {
           />
         </Link>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => {
             const active = isActive(link.href);
+
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "px-3 py-2 text-sm font-medium rounded-md",
+
                     active
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {link.label}
+
                   {active && (
-                    <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-primary" />
+                    <span
+                      className="absolute"/>
                   )}
                 </Link>
               </li>
@@ -107,42 +107,27 @@ export function Navbar({ user }: TNavUser) {
         <div className="flex items-center gap-2">
           <UserMenu user={user} />
 
-          {/* Mobile toggle */}
           <Button
             variant="ghost"
             size="icon"
             className="md:hidden"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? (
-              <X className="size-5" />
-            ) : (
-              <Menu className="size-5" />
-            )}
+            {mobileOpen ? <X /> : <Menu />}
           </Button>
         </div>
       </nav>
 
-      {/* Mobile nav links */}
       {mobileOpen && (
-        <ul className="flex flex-col gap-1 border-t border-border px-4 py-3 md:hidden">
+        <ul className="md:hidden border-t px-4 py-3"
+        >
           {navLinks.map((link) => {
-            const active = isActive(link.href);
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    active
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                  )}
-                >
+                  className="block rounded-md px-3 py-2text-sm">
                   {link.label}
                 </Link>
               </li>
@@ -156,12 +141,58 @@ export function Navbar({ user }: TNavUser) {
 
 function UserMenu({ user }: TNavUser) {
   const router = useRouter();
-  const handelUserMenuAction = async (action: string) => {
-    if (action === "logout") {
-      await logout();
-      toast.success("Logged Out Successful");
-      router.push("/login");
-    }
+
+  const userMenuItems = [
+    {
+      label: "Profile",
+      href: "/profile",
+      icon: User,
+    },
+
+    {
+      label: "Dashboard",
+
+      href:
+        user?.data?.role === "ADMIN"
+          ? "/admin-dashboard"
+          : user?.data?.role === "PROVIDER"
+            ? "/author-dashboard"
+            : "/dashboard",
+
+      icon: LayoutDashboard,
+    },
+
+    {
+      label: "Payments History",
+      href: "/payments-history",
+      icon: CreditCard,
+    },
+
+    {
+      label: "Notifications",
+      href: "/notifications",
+      icon: Bell,
+    },
+
+    {
+      label: "Settings",
+      href: "/settings",
+      icon: Settings,
+    },
+
+    {
+      label: "Support",
+      href: "/support",
+      icon: LifeBuoy,
+    },
+  ];
+
+  const handleLogout = async () => {
+    await logout();
+
+    toast.success("Logged Out Successful");
+
+    router.push("/login");
   };
 
   return (
@@ -171,7 +202,10 @@ function UserMenu({ user }: TNavUser) {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full">
               <Avatar className="size-8">
-                <AvatarImage src={user?.data?.profile?.profileImage} />
+                <AvatarImage
+                  src={user?.data?.profile?.profileImage || "/avatar.png"}
+                />
+
                 <AvatarFallback>
                   {user?.data?.name
                     ?.split(" ")
@@ -180,61 +214,56 @@ function UserMenu({ user }: TNavUser) {
                     .toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <span className="sr-only">Open user menu</span>
             </Button>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel className="flex flex-col">
-              <span className="text-sm font-medium">{user.data?.name}</span>
-              <span className="text-xs font-normal text-muted-foreground">
+              <span className="font-medium">{user.data?.name}</span>
+
+              <span className="text-xs text-muted-foreground">
                 {user.data?.email}
               </span>
+
+              <span className="text-xs text-primary mt-1">
+                {user.data?.role}
+              </span>
             </DropdownMenuLabel>
+
             <DropdownMenuSeparator />
+
             {userMenuItems.map((item) => {
               const Icon = item.icon;
+
               return (
                 <DropdownMenuItem key={item.href} asChild>
                   <Link href={item.href}>
                     <Icon className="mr-2 size-4" />
+
                     {item.label}
                   </Link>
                 </DropdownMenuItem>
               );
             })}
+
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={async () => {
-                await handelUserMenuAction("logout");
-              }}
-              variant="destructive"
-            >
+
+            <DropdownMenuItem variant="destructive" onClick={handleLogout}>
               <LogOut className="mr-2 size-4" />
-              Log out
+              Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <span className="flex gap-4">
-          <Link href={"/login"}>
-            <Button
-              size="lg"
-              variant="outline"
-              className="font-bold shadow-2xl hover:bg-cyan-600 hover:text-white"
-            >
-              Login
-            </Button>
+        <div className="flex gap-3">
+          <Link href="/login">
+            <Button>Login</Button>
           </Link>
-          <Link href={"/register"}>
-            <Button
-              size="lg"
-              variant="outline"
-              className="font-bold shadow-2xl hover:bg-cyan-600 hover:text-white"
-            >
-              Register
-            </Button>
+
+          <Link href="/register">
+            <Button variant="outline">Register</Button>
           </Link>
-        </span>
+        </div>
       )}
     </div>
   );
