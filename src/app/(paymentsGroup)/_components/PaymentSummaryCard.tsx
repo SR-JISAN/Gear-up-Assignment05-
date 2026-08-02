@@ -17,7 +17,7 @@ export default function PaymentSummaryCard({ payment }: Props) {
       <CardContent className="space-y-4">
         <div className="flex justify-between">
           <span>Amount</span>
-          <span className="font-bold">৳{payment.amount}</span>
+          <span className="font-bold">${payment.amount}</span>
         </div>
 
         <div className="flex justify-between">

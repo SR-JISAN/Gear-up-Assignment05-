@@ -6,6 +6,9 @@ export interface IRental {
 
   rentalItem: {
     id: number;
+    startDate: string;
+
+    endDate : string;
 
     product: {
       id: number;

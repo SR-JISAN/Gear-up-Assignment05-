@@ -62,7 +62,7 @@ export default function OrderInformation({ order }: Props) {
           <div className="flex items-center justify-between">
             <span>Total Amount</span>
 
-            <span className="font-bold">৳{order.totalAmount}</span>
+            <span className="font-bold">${order.totalAmount}</span>
           </div>
 
           <div className="flex items-center gap-2">

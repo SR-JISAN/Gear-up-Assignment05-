@@ -51,14 +51,14 @@ export default function OrderDetailsSummary({ order }: Props) {
                   </p>
 
                   <p>
-                    <span className="font-medium">Price / Day:</span> ৳
+                    <span className="font-medium">Price / Day:</span> $
                     {item.pricePerDay}
                   </p>
                 </div>
               </div>
 
               <div className="text-right">
-                <p className="text-lg font-bold">৳{item.subTotal}</p>
+                <p className="text-lg font-bold">${item.subTotal}</p>
               </div>
             </div>
           ))}
@@ -82,7 +82,7 @@ export default function OrderDetailsSummary({ order }: Props) {
           <div className="flex justify-between text-xl font-bold">
             <span>Total Amount</span>
 
-            <span>৳{order.totalAmount}</span>
+            <span>${order.totalAmount}</span>
           </div>
         </div>
       </CardContent>

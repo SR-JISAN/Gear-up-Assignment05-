@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Package, Tag, DollarSign } from "lucide-react";
+import { Package,  DollarSign } from "lucide-react";
 
 interface ProductInfoProps {
   product: {
@@ -43,7 +43,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <div className="flex items-center gap-2 text-lg font-semibold">
               <DollarSign className="h-5 w-5 text-primary" />
 
-              <span>৳ {product.price_per_day} / Day</span>
+              <span>$ {product.price_per_day} / Day</span>
             </div>
 
             <p className="text-sm text-muted-foreground">

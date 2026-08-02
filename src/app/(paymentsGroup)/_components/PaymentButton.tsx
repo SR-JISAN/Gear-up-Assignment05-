@@ -47,7 +47,7 @@ export default function PaymentButton({ orderId, total }: PaymentButtonProps) {
         <div className="flex items-center justify-between">
           <span className="text-muted-foreground">Total Amount</span>
 
-          <span className="text-2xl font-bold text-primary">৳{total}</span>
+          <span className="text-2xl font-bold text-primary">${total}</span>
         </div>
 
         <div className="flex items-center gap-2 text-sm text-green-600">

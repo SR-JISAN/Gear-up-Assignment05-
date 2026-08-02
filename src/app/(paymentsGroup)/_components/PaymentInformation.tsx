@@ -54,7 +54,7 @@ export default function PaymentInformation({ payment }: Props) {
                   {item.startDate} - {item.endDate}
                 </p>
 
-                <p className="font-medium">৳{item.subTotal}</p>
+                <p className="font-medium">${item.subTotal}</p>
               </div>
             </div>
           ))}

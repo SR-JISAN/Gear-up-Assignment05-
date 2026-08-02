@@ -7,29 +7,29 @@ import RentalStatusBadge from "./RentalStatusBadge";
 import ReviewButton from "./ReviewButton";
 
 export default function RentalsTable({ rentals }: { rentals: IRental[] }) {
-  return (
-    <div className="rounded-xl border">
-      <table className="w-full">
-        <thead>
-          <tr>
-            <th>Product</th>
+   
+    return (
+      <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
+        <table className="w-full">
+          <thead className="bg-slate-50">
+            <tr>
+              <th className="px-6 py-4 text-left">Image</th>
+              <th className="px-6 py-4 text-left">Product</th>
+              <th className="px-6 py-4 text-left">Status</th>
+              <th className="px-6 py-4 text-left">Rental</th>
+              <th className="px-6 py-4 text-left">Return</th>
+              <th className="px-6 py-4 text-center">Action</th>
+            </tr>
+          </thead>
 
-            <th>Status</th>
-
-            <th>Rental</th>
-
-            <th>Return</th>
-
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {rentals.map((order) =>
-            order.rentalItem.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  <div className="flex items-center gap-3">
+          <tbody>
+            {rentals.map((order) =>
+              order.rentalItem.map((item) => (
+                <tr
+                  key={item.id}
+                  className="border-t hover:bg-slate-50 transition"
+                >
+                  <td className="px-6 py-4">
                     <Image
                       src={item.product.product_image}
                       alt={item.product.title}
@@ -37,35 +37,40 @@ export default function RentalsTable({ rentals }: { rentals: IRental[] }) {
                       height={70}
                       className="rounded-lg object-cover"
                     />
+                  </td>
 
-                    <div>
-                      <p>{item.product.title}</p>
+                  <td className="px-6 py-4">
+                    <p className="font-semibold">{item.product.title}</p>
 
-                      <p>{item.product.brand}</p>
-                    </div>
-                  </div>
-                </td>
+                    <p className="text-sm text-muted-foreground">
+                      {item.product.brand}
+                    </p>
+                  </td>
 
-                <td>
-                  <RentalStatusBadge status={order.orderStatus} />
-                </td>
+                  <td className="px-6 py-4">
+                    <RentalStatusBadge status={order.orderStatus} />
+                  </td>
 
-                <td>{order.rentalDate}</td>
+                  <td className="px-6 py-4">
+                    {new Date(item.startDate).toLocaleDateString("en-CA")}
+                  </td>
 
-                <td>{order.returnDate}</td>
+                  <td className="px-6 py-4">
+                    {new Date(item.endDate).toLocaleDateString("en-CA")}
+                  </td>
 
-                <td>
-                  <ReviewButton
-                    status={order.orderStatus}
-                    productId={item.product.id}
-                    reviewId={item.product.reviews[0]?.id}
-                  />
-                </td>
-              </tr>
-            )),
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+                  <td className="px-6 py-4 text-center">
+                    <ReviewButton
+                      status={order.orderStatus}
+                      productId={item.product.id}
+                      reviewId={item.product.reviews[0]?.id}
+                    />
+                  </td>
+                </tr>
+              )),
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
 }

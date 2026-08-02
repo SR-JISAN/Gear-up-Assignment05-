@@ -96,13 +96,13 @@ export default function OrderSummary({ order }: { order: TOrder["data"] }) {
                 <div>
                   <span className="text-muted-foreground">Price / Day</span>
 
-                  <p>৳{item.pricePerDay}</p>
+                  <p>${item.pricePerDay}</p>
                 </div>
 
                 <div>
                   <span className="text-muted-foreground">Subtotal</span>
 
-                  <p className="font-semibold">৳{item.subTotal}</p>
+                  <p className="font-semibold">${item.subTotal}</p>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function OrderSummary({ order }: { order: TOrder["data"] }) {
         <span className="text-lg font-medium">Total Amount</span>
 
         <span className="text-2xl font-bold text-primary">
-          ৳{order.totalAmount}
+          ${order.totalAmount}
         </span>
       </div>
     </div>
