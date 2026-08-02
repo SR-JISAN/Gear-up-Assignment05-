@@ -38,7 +38,7 @@ export async function createProduct(formData: FormData) {
     };
   }
 
-  revalidatePath("/provider-dashboard");
+  revalidatePath("/author-dashboard");
 
   return {
     success: true,

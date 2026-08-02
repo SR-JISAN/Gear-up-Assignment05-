@@ -30,9 +30,9 @@ export default async function CustomerDashboardPage() {
 
     activeOrders: response.activeOrders ?? 0,
 
-    totalPayment: response.totalPayment ?? 0,
+    totalPaymentAmount: response.totalPaymentAmount ?? 0,
 
-    products: response.products ?? 0,
+    totalRentedProducts: response.totalRentedProducts ?? 0,
 
     recentPayments: response.recentPayments ?? [],
   };

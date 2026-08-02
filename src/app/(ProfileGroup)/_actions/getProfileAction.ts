@@ -14,7 +14,7 @@ export interface IUser {
   createdAt: string;
   profile: {
     id: string;
-    bio: string;
+    bio: string | null;
     profileImage: string | null;
     userId: string;
     created_at: string;

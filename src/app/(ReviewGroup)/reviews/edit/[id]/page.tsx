@@ -14,7 +14,7 @@ export default async function EditReviewPage({ params }: Props) {
   const review = await getReviewById(Number(id));
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container w-11/12 md:w-10/12 mx-auto py-10">
       <h1 className="mb-6 text-3xl font-bold">Edit Review</h1>
 
       <EditReviewForm review={review.data} />

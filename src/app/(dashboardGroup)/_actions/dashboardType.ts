@@ -1,16 +1,19 @@
 export interface CustomerDashboardData {
   totalOrders: number;
   activeOrders: number;
-  totalPayment: number;
-  products: number;
+  totalRentedProducts: number;
+  totalPaymentAmount: number;
   recentPayments: Payment[];
 }
 
 export interface Payment {
   id: number;
+  transactionId: string;
   amount: number;
-  status: string;
+  gateway: string;
+  status: "PENDING" | "SUCCESS" | "FAILED" | "REFUNDED";
   createdAt: string;
+  paidAt: string | null;
 }
 
 export interface AdminUser {
@@ -26,7 +29,6 @@ export interface AdminUser {
     profileImage: string | null;
   } | null;
 }
-
 
 export interface ProviderProduct {
   id: string;

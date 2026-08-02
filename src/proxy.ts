@@ -86,7 +86,9 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(new URL("/admin-dashboard", request.url));
 
       case "PROVIDER":
-        return NextResponse.redirect(new URL("/author-dashboard", request.url));
+        return NextResponse.redirect(
+          new URL("/author-dashboard", request.url),
+        );
 
       default:
         return NextResponse.redirect(new URL("/", request.url));

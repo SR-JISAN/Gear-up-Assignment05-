@@ -12,7 +12,8 @@ interface Props {
 }
 
 export default function PersonalInformation({ user }: Props) {
-  return (
+  
+    return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Personal Information</CardTitle>

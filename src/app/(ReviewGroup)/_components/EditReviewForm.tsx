@@ -41,7 +41,7 @@ export default function EditReviewForm({ review }: Props) {
   return (
     <form
       action={formAction}
-      className="max-w-xl space-y-6 rounded-xl border p-6"
+      className=" space-y-6 rounded-xl border p-6"
     >
       <div>
         <label className="font-semibold">Rating</label>

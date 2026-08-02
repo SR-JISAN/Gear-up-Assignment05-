@@ -67,7 +67,7 @@ switch (role) {
   case "CUSTOMER":
     redirect("/");
   case "PROVIDER":
-    redirect("/provider-dashboard");
+    redirect("/author-dashboard");
   case "ADMIN":
     redirect("/admin-dashboard");
 }

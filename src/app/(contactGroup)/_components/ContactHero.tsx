@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function ContactHero() {
   return (
     <section className="relative overflow-hidden bg-linear-to-r from-black via-slate-900 to-black py-28">
-      <div className="absolute inset-0 bg-[url('/images/contact-banner.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-[url('/contact-banner.jpg')] bg-cover bg-center opacity-20" />
 
       <div className="container relative z-10 text-center">
         <motion.h1

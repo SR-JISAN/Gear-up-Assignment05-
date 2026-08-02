@@ -11,7 +11,7 @@ import { CustomerDashboardData } from "../_actions/dashboardType";
 
 
 
-const cardConfig: {
+export const cardConfig: {
   title: string;
   key: keyof CustomerDashboardData;
   icon: LucideIcon;
@@ -28,12 +28,12 @@ const cardConfig: {
   },
   {
     title: "Total Payment",
-    key: "totalPayment",
+    key: "totalPaymentAmount",
     icon: CreditCard,
   },
   {
     title: "Products Rented",
-    key: "products",
+    key: "totalRentedProducts",
     icon: Package,
   },
 ];
@@ -43,7 +43,6 @@ export default function DashboardStats({
 }: {
   data: CustomerDashboardData;
 }) {
-
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
       {cardConfig.map((card) => {
