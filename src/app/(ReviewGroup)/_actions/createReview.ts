@@ -3,23 +3,64 @@
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 
-export async function createReview(data: {
-  productId: number;
-  rating: number;
-  comment: string;
-}) {
-  const token = (await cookies()).get("accessToken")?.value;
+export interface TCreateReviewState {
+  success: boolean;
+  message: string;
+}
 
-  const res = await fetch(`${process.env.BACKEND_APP_URL}/api/reviews/create`, {
-    method: "POST",
-    headers: {
-      Authorization: token!,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+export async function createReviewAction(
+  _: TCreateReviewState,
+  formData: FormData,
+): Promise<TCreateReviewState> {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("accessToken")?.value;
 
-  revalidatePath("/my-reviews");
+    if (!token) {
+      return {
+        success: false,
+        message: "Unauthorized",
+      };
+    }
 
-  return res.json();
+    const payload = {
+      productId: Number(formData.get("productId")),
+      rating: Number(formData.get("rating")),
+      comment: String(formData.get("comment")),
+    };
+
+    const res = await fetch(
+      `${process.env.BACKEND_APP_URL}/api/reviews/create`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(payload),
+      },
+    );
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      return {
+        success: false,
+        message: result.message || "Failed to create review",
+      };
+    }
+
+    revalidatePath("/rentals");
+    revalidatePath("/my-reviews");
+
+    return {
+      success: true,
+      message: result.message || "Review created successfully",
+    };
+  } catch {
+    return {
+      success: false,
+      message: "Something went wrong",
+    };
+  }
 }

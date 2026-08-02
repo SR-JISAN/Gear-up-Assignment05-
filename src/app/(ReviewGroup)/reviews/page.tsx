@@ -4,10 +4,11 @@ import { MessageSquare } from "lucide-react";
 import EmptyReview from "../_components/EmptyReview";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Review } from "../_actions/review.type";
+
 
 import ReviewList from "../_components/ReviewList";
 import { getAllReviews } from "../_actions/getAllReviews";
+import { IReview } from "../_actions/review.type";
 
 export default async function ReviewsPage() {
   const response = await getAllReviews();
@@ -17,7 +18,7 @@ export default async function ReviewsPage() {
   const averageRating =
     reviews.length > 0
       ? (
-          reviews.reduce((sum: number, review: Review) => sum + review.rating, 0) /
+          reviews.reduce((sum: number, review: IReview) => sum + review.rating, 0) /
           reviews.length
         ).toFixed(1)
       : "0";

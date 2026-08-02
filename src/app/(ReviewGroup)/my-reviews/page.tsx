@@ -1,68 +1,60 @@
-import { MessageSquare, Star } from "lucide-react";
+import Link from "next/link";
+import { Pencil } from "lucide-react";
 
+
+import { Button } from "@/components/ui/button";
+import ReviewCard from "../_components/ReviewCard";
+import DeleteReviewDialog from "../_components/DeleteReviewDialog";
 import { getMyReviews } from "../_actions/getMyReviews";
 
-import ReviewList from "../_components/ReviewList";
-import EmptyReview from "../_components/EmptyReview";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Review } from "../_actions/review.type";
-
 export default async function MyReviewsPage() {
-  const response = await getMyReviews();
+  const reviews = await getMyReviews();
 
-  const reviews: Review[] = response.data ?? [];
+  if (!reviews.success || reviews.data.length === 0) {
+    return (
+      <section className="container py-20">
+        <div className="rounded-xl border border-dashed py-20 text-center">
+          <h2 className="text-2xl font-bold">No Reviews Yet</h2>
 
-  const averageRating =
-    reviews.length > 0
-      ? (
-          reviews.reduce((sum, review) => sum + review.rating, 0) /
-          reviews.length
-        ).toFixed(1)
-      : "0";
+          <p className="mt-2 text-muted-foreground">
+            You have not reviewed any rented products.
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <div className="container mx-auto space-y-8 py-8">
-      <div>
+    <section className="container py-10">
+      <div className="mb-8">
         <h1 className="text-4xl font-bold">My Reviews</h1>
 
-        <p className="text-muted-foreground">Manage your submitted reviews.</p>
+        <p className="text-muted-foreground">
+          Manage all your product reviews.
+        </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Total Reviews</CardTitle>
-          </CardHeader>
+      <div className="space-y-6">
+        {reviews.data.map((review) => (
+          <div
+            key={review.id}
+            className="rounded-xl border bg-card p-5 shadow-sm"
+          >
+            <ReviewCard review={review} />
 
-          <CardContent className="flex items-center justify-between">
-            <MessageSquare className="text-primary" />
-            <p className="text-4xl font-bold">{reviews.length}</p>
-          </CardContent>
-        </Card>
+            <div className="mt-5 flex justify-end gap-3">
+              <Button asChild variant="outline">
+                <Link href={`/reviews/edit/${review.id}`}>
+                  <Pencil className="mr-2 h-4 w-4" />
+                  Edit
+                </Link>
+              </Button>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Average Rating</CardTitle>
-          </CardHeader>
-
-          <CardContent className="flex items-center justify-between">
-            <Star className="fill-yellow-400 text-yellow-400" />
-            <p className="text-4xl font-bold">{averageRating}</p>
-          </CardContent>
-        </Card>
+              <DeleteReviewDialog reviewId={review.id} />
+            </div>
+          </div>
+        ))}
       </div>
-
-      {reviews.length ? (
-        <ReviewList reviews={reviews} showActions />
-      ) : (
-        <EmptyReview
-          title="No Reviews Yet"
-          description="You haven't submitted any reviews."
-          buttonText="Browse Products"
-          buttonLink="/products"
-        />
-      )}
-    </div>
+    </section>
   );
 }

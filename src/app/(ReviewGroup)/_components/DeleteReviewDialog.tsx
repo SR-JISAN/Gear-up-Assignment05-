@@ -1,11 +1,10 @@
 "use client";
 
+import { Loader2, Trash2 } from "lucide-react";
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Trash2 } from "lucide-react";
 
-import { deleteReview } from "../_actions/deleteReview";
+import { deleteReviewAction } from "../_actions/deleteReview";
 
 import {
   AlertDialog,
@@ -21,27 +20,21 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-interface DeleteReviewDialogProps {
+interface Props {
   reviewId: number;
 }
 
-export default function DeleteReviewDialog({
-  reviewId,
-}: DeleteReviewDialogProps) {
-  const router = useRouter();
-
+export default function DeleteReviewDialog({ reviewId }: Props) {
   const [pending, startTransition] = useTransition();
 
   const handleDelete = () => {
     startTransition(async () => {
-      const result = await deleteReview(reviewId);
+      const result = await deleteReviewAction(reviewId);
 
       if (result.success) {
-        toast.success(result.message || "Review deleted successfully.");
-
-        router.refresh();
+        toast.success(result.message);
       } else {
-        toast.error(result.message || "Failed to delete review.");
+        toast.error(result.message);
       }
     });
   };
@@ -49,7 +42,7 @@ export default function DeleteReviewDialog({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="sm">
+        <Button variant="destructive">
           <Trash2 className="mr-2 h-4 w-4" />
           Delete
         </Button>
@@ -57,11 +50,10 @@ export default function DeleteReviewDialog({
 
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete this review?</AlertDialogTitle>
+          <AlertDialogTitle>Delete Review?</AlertDialogTitle>
 
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently remove your
-            review.
+            This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
 
@@ -69,7 +61,8 @@ export default function DeleteReviewDialog({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
 
           <AlertDialogAction onClick={handleDelete} disabled={pending}>
-            {pending ? "Deleting..." : "Delete"}
+            {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

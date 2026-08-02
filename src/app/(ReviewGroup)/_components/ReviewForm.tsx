@@ -1,120 +1,91 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
+import { Star } from "lucide-react";
 import { toast } from "sonner";
 
-import StarRating from "./StarRating";
-
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-
-import { createReview } from "../_actions/createReview";
-import { updateReview } from "../_actions/updateReview";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 interface ReviewFormProps {
   productId?: number;
-
-  review?: {
-    id: number;
-    rating: number;
-    comment: string;
-  };
-
-  isEditing?: boolean;
+  initialRating?: number;
+  initialComment?: string;
+  action: (
+    state: { success: boolean; message: string },
+    formData: FormData,
+  ) => Promise<{ success: boolean; message: string }>;
 }
 
-export default function ReviewForm({ productId, review }: ReviewFormProps) {
-  const router = useRouter();
+const initialState = {
+  success: false,
+  message: "",
+};
 
-  const [pending, startTransition] = useTransition();
+export default function ReviewForm({
+  productId,
+  initialRating = 0,
+  initialComment = "",
+  action,
+}: ReviewFormProps) {
+  const [rating, setRating] = useState(initialRating);
 
-  const [rating, setRating] = useState(review?.rating || 0);
+  const [state, formAction, pending] = useActionState(action, initialState);
 
-  const [comment, setComment] = useState(review?.comment || "");
+  useEffect(() => {
+    if (!state.message) return;
 
-  const handleSubmit = () => {
-    if (!rating) {
-      toast.error("Please select a rating.");
-      return;
+    if (state.success) {
+      toast.success(state.message);
+    } else {
+      toast.error(state.message);
     }
-
-    if (!comment.trim()) {
-      toast.error("Please write a review.");
-      return;
-    }
-
-    startTransition(async () => {
-      let result;
-
-      if (review) {
-        result = await updateReview(review.id, {
-          rating,
-          comment,
-        });
-      } else {
-        result = await createReview({
-          productId: productId!,
-          rating,
-          comment,
-        });
-      }
-
-      if (result.success) {
-        toast.success(result.message);
-
-        router.refresh();
-
-        router.push("/my-reviews");
-      } else {
-        toast.error(result.message);
-      }
-    });
-  };
+  }, [state]);
 
   return (
-    <Card className="shadow-lg">
-      <CardHeader>
-        <CardTitle>{review ? "Update Review" : "Write a Review"}</CardTitle>
+    <form action={formAction} className="space-y-6">
+      {productId && <input type="hidden" name="productId" value={productId} />}
 
-        <CardDescription>
-          Share your experience with this product.
-        </CardDescription>
-      </CardHeader>
+      <input type="hidden" name="rating" value={rating} />
 
-      <CardContent className="space-y-6">
-        <div className="space-y-2">
-          <p className="font-medium">Rating</p>
+      <div className="space-y-3">
+        <Label>Rating</Label>
 
-          <StarRating value={rating} onChange={setRating} />
+        <div className="flex gap-2">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setRating(index + 1)}
+            >
+              <Star
+                className={`h-8 w-8 transition ${
+                  index < rating
+                    ? "fill-yellow-400 text-yellow-400"
+                    : "text-gray-300"
+                }`}
+              />
+            </button>
+          ))}
         </div>
+      </div>
 
-        <div className="space-y-2">
-          <p className="font-medium">Comment</p>
+      <div className="space-y-3">
+        <Label>Comment</Label>
 
-          <Textarea
-            rows={6}
-            value={comment}
-            placeholder="Write your experience..."
-            onChange={(e) => setComment(e.target.value)}
-          />
-        </div>
+        <Textarea
+          name="comment"
+          rows={6}
+          defaultValue={initialComment}
+          placeholder="Share your experience..."
+          required
+        />
+      </div>
 
-        <Button disabled={pending} onClick={handleSubmit} className="w-full">
-          {pending
-            ? "Submitting..."
-            : review
-              ? "Update Review"
-              : "Submit Review"}
-        </Button>
-      </CardContent>
-    </Card>
+      <Button className="w-full" disabled={pending}>
+        {pending ? "Submitting..." : "Submit Review"}
+      </Button>
+    </form>
   );
 }

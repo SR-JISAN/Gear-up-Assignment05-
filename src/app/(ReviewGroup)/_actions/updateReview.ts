@@ -3,28 +3,57 @@
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 
-export async function updateReview(
+export type UpdateReviewState = {
+  success: boolean;
+  message: string;
+};
+
+export async function updateReviewAction(
   id: number,
-  data: {
-    rating: number;
-    comment: string;
-  },
-) {
-  const token = (await cookies()).get("accessToken")?.value;
+  _: UpdateReviewState,
+  formData: FormData,
+): Promise<UpdateReviewState> {
+  try {
+    const token = (await cookies()).get("accessToken")?.value;
 
-  const res = await fetch(
-    `${process.env.BACKEND_APP_URL}/api/reviews/update/${id}`,
-    {
-      method: "PATCH",
-      headers: {
-        Authorization: token!,
-        "Content-Type": "application/json",
+    const rating = Number(formData.get("rating"));
+    const comment = String(formData.get("comment"));
+
+    const res = await fetch(
+      `${process.env.BACKEND_APP_URL}/api/reviews/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: token!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rating,
+          comment,
+        }),
       },
-      body: JSON.stringify(data),
-    },
-  );
+    );
 
-  revalidatePath("/my-reviews");
+    const result = await res.json();
 
-  return res.json();
+    if (!res.ok) {
+      return {
+        success: false,
+        message: result.message || "Failed to update review",
+      };
+    }
+
+    revalidatePath("/my-reviews");
+    revalidatePath(`/reviews/${id}`);
+
+    return {
+      success: true,
+      message: "Review updated successfully",
+    };
+  } catch {
+    return {
+      success: false,
+      message: "Something went wrong",
+    };
+  }
 }

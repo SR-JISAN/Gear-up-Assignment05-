@@ -4,7 +4,7 @@ import { userInfo } from '@/service/userInfo';
 
 import React from 'react';
 
-const reviewLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) => {
+const rentedProductLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) => {
     const user = await userInfo();
 
     return (
@@ -16,4 +16,4 @@ const reviewLayout = async ({children,}: Readonly<{children: React.ReactNode;}>)
     );
 };
 
-export default reviewLayout;
+export default rentedProductLayout;

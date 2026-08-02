@@ -1,21 +1,13 @@
-"use server";
-
-import { cookies } from "next/headers";
-
 export async function getReviewById(id: number) {
-  const cookieStore = await cookies();
+  const res = await fetch(`${process.env.BACKEND_APP_URL}/api/reviews/${id}`, {
+    cache: "no-store",
+  });
 
-  const token = cookieStore.get("accessToken")?.value;
+  const result = await res.json();
 
-  const res = await fetch(
-    `${process.env.BACKEND_APP_URL}/api/reviews/single/${id}`,
-    {
-      headers: {
-        Authorization: token!,
-      },
-      cache: "no-store",
-    },
-  );
+  if (!res.ok) {
+    throw new Error(result.message || "Failed to get review");
+  }
 
-  return res.json();
+  return result;
 }

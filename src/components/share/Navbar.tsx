@@ -14,6 +14,7 @@ import {
   CreditCard,
   Bell,
   LifeBuoy,
+  Kanban,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -61,7 +62,10 @@ export function Navbar({ user }: TNavUser) {
     ...(user?.data?.role === "ADMIN"
       ? [{ label: "Add Categories", href: "/postCategories" }]
       : []),
-    { label: "About Us", href: "/about" },
+    ...(user?.data?.role === "CUSTOMER"
+      ? [{ label: "My Rented Product", href: "/rentedProducts" }]
+      : []),
+
     { label: "Contact Us", href: "/contact" },
   ];
   const pathname = usePathname();
@@ -170,10 +174,25 @@ function UserMenu({ user }: TNavUser) {
       icon: LayoutDashboard,
     },
     ...(user?.data?.role === "CUSTOMER"
-      ? [{ label: "Payments History", href: "/payments-history", icon: CreditCard }]
+      ? [
+          {
+            label: "Payments History",
+            href: "/payments-history",
+            icon: CreditCard,
+          },
+        ]
       : []),
     ...(user?.data?.role === "ADMIN"
-      ? [{ label: "Payments History", href: "/payments-history", icon: CreditCard }]
+      ? [
+          {
+            label: "Payments History",
+            href: "/payments-history",
+            icon: CreditCard,
+          },
+        ]
+      : []),
+    ...(user?.data?.role === "CUSTOMER"
+      ? [{ label: "My Reviews", href: "/my-reviews", icon: Kanban }]
       : []),
 
     {
