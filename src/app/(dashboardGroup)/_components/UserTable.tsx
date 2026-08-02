@@ -57,7 +57,7 @@ export default function UserTable({ users }: { users: AdminUser[] }) {
                   <TableRow key={user.id}>
                     <TableCell>
                       <UserAvatar
-                        image={user.profile?.profileImage ?? null}
+                        image={user.profile?.profileImage || "/avatar.png"}
                         name={user.name}
                       />
                     </TableCell>
