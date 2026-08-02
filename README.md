@@ -1,36 +1,236 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 GearUp - Sports & Outdoor Gear Rental Platform (Frontend)
 
-## Getting Started
+GearUp is a modern full-stack sports and outdoor gear rental platform that allows customers to rent equipment online, providers to manage their inventory, and administrators to monitor the entire system.
 
-First, run the development server:
+This repository contains the **Frontend Application** built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**.
+
+---
+
+## 🌐 Live Demo
+
+**Frontend:** https://gear-up-app-seven.vercel.app
+
+**Backend API:** https://gear-up-backeen-server.vercel.app/
+
+---
+
+# ✨ Features
+
+## 👤 Authentication
+
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Role-Based Access Control
+
+---
+
+## 🏠 Customer Features
+
+- Browse Products
+- Search Products
+- Filter by Category
+- Product Details
+- Rent Equipment
+- Stripe Checkout
+- Payment Success & Cancel Pages
+- View Rental History
+- Update Profile
+
+---
+
+## 🛍 Provider Features
+
+- Dashboard Overview
+- Add Product
+- Update Product
+- Delete Product
+- Manage Rental Orders
+
+---
+
+## 🛠 Admin Features
+
+- Dashboard Overview
+- Manage Users
+- Manage Categories
+- Manage Products
+- Manage Orders
+- Manage Reviews
+
+---
+
+## 💳 Payment
+
+Integrated with **Stripe Checkout**
+
+Features include:
+
+- Secure Checkout
+- Payment Success Page
+- Payment Cancel Page
+- Backend Stripe Webhook Support
+
+---
+
+# 🖥 Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- React Hook Form
+- Zod
+- Sonner
+
+### Backend
+
+- Express.js
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+- Stripe
+
+---
+
+# 📂 Project Structure
+
+```
+app/
+components/
+hooks/
+lib/
+public/
+actions/
+types/
+
+README.md
+API_INTEGRATION.md
+```
+
+---
+
+# 🔗 API
+
+**Base URL**
+
+```
+https://gear-up-backeen-server.vercel.app/api
+```
+
+Detailed API mapping is available in:
+
+```
+API_INTEGRATION.md
+```
+
+---
+
+# ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/SR-JISAN/Gear-up-Assignment05-
+```
+
+Go to project directory
+
+```bash
+cd gearup-frontend
+```
+
+Install dependencies
+
+```bash
+pnpm install
+```
+
+Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 🌍 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file and add:
 
-## Learn More
+```env
+NEXT_PUBLIC_API_URL=https://gear-up-backeen-server.vercel.app
 
-To learn more about Next.js, take a look at the following resources:
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🔐 Test Credentials
 
-## Deploy on Vercel
+## Admin
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Email: srjisan@gmail.com // ADMIN
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+Md Jisan // ADMIN
+```
+
+Password:123456
+
+```
+Admin
+```
+
+> Replace the credentials above with your actual deployed admin account before submission.
+
+---
+
+# 📄 Documentation
+
+- ✅ API Documentation → `API_INTEGRATION.md`
+
+---
+
+# 🚀 Deployment
+
+Frontend
+
+```
+Vercel
+```
+
+Backend
+
+```
+Vercel
+```
+
+Database
+
+```
+PostgreSQL
+```
+
+---
+
+# 👨‍💻 Developer
+
+**Md. Jisan**
+
+GitHub:
+https://github.com/SR-JISAN
+
+Portfolio:
+https://portfolio-front-usdb.vercel.app
+
+---
+
+# 📜 License
+
+This project was developed for educational purposes as part of an academic assignment.
