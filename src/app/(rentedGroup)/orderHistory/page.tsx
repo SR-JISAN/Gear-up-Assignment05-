@@ -8,8 +8,8 @@ export default async function OrdersPage() {
   const orders : IOrder[] = await getOrdersHistory();
 
   return (
-    <section className="container py-8">
-      <div className="mb-8 text-center">
+    <section className="container w-11/12 md:w-10/12 mx-auto py-8">
+      <div className="mb-8  text-center">
         <h1 className="text-3xl font-bold">All Orders</h1>
 
         <p className="text-muted-foreground">

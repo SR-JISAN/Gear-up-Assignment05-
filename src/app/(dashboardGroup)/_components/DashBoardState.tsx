@@ -43,6 +43,7 @@ export default function DashboardStats({
 }: {
   data: CustomerDashboardData;
 }) {
+
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
       {cardConfig.map((card) => {

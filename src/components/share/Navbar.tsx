@@ -54,14 +54,15 @@ export function Navbar({ user }: TNavUser) {
     ...(user?.data?.role === "PROVIDER"
       ? [{ label: "Add Products", href: "/postProduct" }]
       : []),
-    
+
     ...(user?.data?.role === "ADMIN"
       ? [{ label: "Categories", href: "/categories" }]
       : []),
     ...(user?.data?.role === "ADMIN"
       ? [{ label: "Add Categories", href: "/postCategories" }]
       : []),
-    
+    { label: "About Us", href: "/about" },
+    { label: "Contact Us", href: "/contact" },
   ];
   const pathname = usePathname();
 

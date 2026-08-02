@@ -4,7 +4,7 @@ import { userInfo } from '@/service/userInfo';
 
 import React from 'react';
 
-const authLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) => {
+const productLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) => {
     const user = await userInfo();
     return (
       <div className="max-w-full">
@@ -15,4 +15,4 @@ const authLayout = async ({children,}: Readonly<{children: React.ReactNode;}>) =
     );
 };
 
-export default authLayout;
+export default productLayout;
