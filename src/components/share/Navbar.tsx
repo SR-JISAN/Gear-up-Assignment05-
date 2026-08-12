@@ -30,30 +30,28 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { toast } from "sonner";
 import { logout } from "@/service/logout";
-import Image from "next/image";
-
 import { IUser } from "@/service/interfaceUser";
+import { ThemeToggle } from "../theme-toggle";
 
-// Navbar links
-
-
+import LogoImage from "../LogoImage"
 
 type TNavUser = {
   user: IUser;
 };
 
 export function Navbar({ user }: TNavUser) {
-
+   console.log(user)
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: "All Orders", href: "/orderHistory" },
 
     ...(user?.data?.role === "PROVIDER"
-      ? [{ label: "Add Products", href: "/postProduct" }]
+      ? [
+          { label: "Add Products", href: "/postProduct" },
+          { label: "All Orders", href: "/orderHistory" },
+        ]
       : []),
 
     ...(user?.data?.role === "ADMIN"
@@ -72,6 +70,8 @@ export function Navbar({ user }: TNavUser) {
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -79,13 +79,7 @@ export function Navbar({ user }: TNavUser) {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="Gear Up Logo"
-            width={120}
-            height={40}
-            priority
-          />
+          <LogoImage/>
         </Link>
 
         <ul className="hidden md:flex items-center gap-1">
@@ -106,10 +100,7 @@ export function Navbar({ user }: TNavUser) {
                 >
                   {link.label}
 
-                  {active && (
-                    <span
-                      className="absolute"/>
-                  )}
+                  {active && <span className="absolute" />}
                 </Link>
               </li>
             );
@@ -131,15 +122,15 @@ export function Navbar({ user }: TNavUser) {
       </nav>
 
       {mobileOpen && (
-        <ul className="md:hidden border-t px-4 py-3"
-        >
+        <ul className="md:hidden border-t px-4 py-3">
           {navLinks.map((link) => {
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block rounded-md px-3 py-2text-sm">
+                  className="block rounded-md px-3 py-2text-sm"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -223,7 +214,8 @@ function UserMenu({ user }: TNavUser) {
   };
 
   return (
-    <div>
+    <div className="flex items-center gap-4">
+      <div>
       {user?.success ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -274,7 +266,6 @@ function UserMenu({ user }: TNavUser) {
             })}
 
             <DropdownMenuSeparator />
-
             <DropdownMenuItem variant="destructive" onClick={handleLogout}>
               <LogOut className="mr-2 size-4" />
               Logout
@@ -292,6 +283,8 @@ function UserMenu({ user }: TNavUser) {
           </Link>
         </div>
       )}
+    </div>
+    <ThemeToggle />
     </div>
   );
 }

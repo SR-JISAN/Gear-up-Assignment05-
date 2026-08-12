@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { Eye, EyeClosed } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { registerAction, TActionState } from "../_actions/registerAction";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 function RegisterForm() {
     const initialState: TActionState = {
@@ -89,8 +90,13 @@ function RegisterForm() {
             </Select>
           </div>
 
-          <Button>{pending ? "Regis..." : "Register"}</Button>
-
+          <Button
+            variant="outline"
+            className="hover:bg-cyan-600 hover:text-white font-bold"
+          >
+            {pending ? "Regis..." : "Register"}
+          </Button>
+          <GoogleLoginButton/>
           <p>
             Already Have Account{" "}
             <Link
