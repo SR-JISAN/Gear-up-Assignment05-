@@ -10,7 +10,7 @@ export default function CTA() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        className="container rounded-3xl bg-cyan-600 p-16 text-center"
+        className="container rounded-3xl  p-16 text-center"
       >
         <h2 className="text-5xl font-bold text-black">
           Ready for Your Next Adventure?

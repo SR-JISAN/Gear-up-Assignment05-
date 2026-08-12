@@ -108,7 +108,7 @@ function LoginForm() {
           </Link>
         </p>
 
-        <div className="flex justify-between items-center gap-4">
+        <div className="block md:flex justify-between  items-center gap-4">
           <Button
             type="button"
             variant="outline"

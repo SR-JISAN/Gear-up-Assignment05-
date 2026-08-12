@@ -13,7 +13,7 @@ export async function deleteReviewAction(id: number) {
       {
         method: "DELETE",
         headers: {
-          Authorization: token!,
+          Authorization: `Bearer ${token}`,
         },
       },
     );

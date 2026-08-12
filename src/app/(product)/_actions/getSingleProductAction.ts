@@ -11,7 +11,7 @@ export const getSingleProductAction = async (id: number) => {
       `${process.env.BACKEND_APP_URL}/api/products/single/${id}`,
       {
         headers: {
-          Authorization: token!,
+          Authorization: `Bearer ${token}`,
         },
         cache: "no-store",
       },

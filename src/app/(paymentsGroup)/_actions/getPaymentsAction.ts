@@ -20,7 +20,7 @@ export async function getPayments(): Promise<IGetPaymentsResponse> {
     `${process.env.BACKEND_APP_URL}/api/payments/history`,
     {
       headers: {
-        Authorization: accessToken!,
+        Authorization: `Bearer ${accessToken}`,
       },
       cache: "no-store",
     },

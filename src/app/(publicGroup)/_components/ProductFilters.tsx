@@ -97,7 +97,7 @@ export default function ProductFilters() {
 
   return (
     <div>
-      <div className="flex gap-4 justify-evenly items-center">
+      <div className="w-10/12 mx-auto">
         {/* Search */}
         <div className="relative md:col-span-2">
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -110,32 +110,33 @@ export default function ProductFilters() {
           />
         </div>
 
-        <Select
-          value={category}
-          disabled={isPending}
-          onValueChange={(value) => {
-            setCategory(value);
+        <div className="py-4">
+          <Select
+            value={category}
+            disabled={isPending}
+            onValueChange={(value) => {
+              setCategory(value);
 
-            updateQuery({
-              category: value,
-            });
-          }}
-          
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
+              updateQuery({
+                category: value,
+              });
+            }}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Category" />
+            </SelectTrigger>
 
-          <SelectContent >
-            <SelectItem value="all">All Categories</SelectItem>
+            <SelectContent>
+              <SelectItem value="all">All Categories</SelectItem>
 
-            {categories.map((item) => (
-              <SelectItem key={item.id} value={item.name}>
-                {item.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+              {categories.map((item) => (
+                <SelectItem key={item.id} value={item.name}>
+                  {item.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <Select
           value={availability}

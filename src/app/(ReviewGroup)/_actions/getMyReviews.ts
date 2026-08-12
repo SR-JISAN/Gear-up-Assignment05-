@@ -12,7 +12,7 @@ export async function getMyReviews() : Promise<IReviewsResponse> {
     `${process.env.BACKEND_APP_URL}/api/reviews/my-reviews`,
     {
       headers: {
-        Authorization: token!,
+        Authorization: `Bearer ${token}`,
       },
       cache: "no-store",
     },
