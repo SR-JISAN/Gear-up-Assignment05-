@@ -7,6 +7,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
+
 
 interface ReviewFormProps {
   productId?: number;
@@ -32,16 +34,21 @@ export default function ReviewForm({
   const [rating, setRating] = useState(initialRating);
 
   const [state, formAction, pending] = useActionState(action, initialState);
+const router = useRouter();
 
+  
+ 
   useEffect(() => {
     if (!state.message) return;
 
     if (state.success) {
       toast.success(state.message);
+      router.push("/my-reviews");
+          router.refresh();
     } else {
       toast.error(state.message);
     }
-  }, [state]);
+  }, [state,router]);
 
   return (
     <form action={formAction} className="space-y-6">
