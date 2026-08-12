@@ -18,23 +18,19 @@ export default function GoogleLoginButton() {
         return;
       }
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_APP_URL}/api/auth/google`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            idToken,
-          }),
+      const response = await fetch("/api/auth/google", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          idToken,
+        }),
+      });
 
       const result = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || !result.success) {
         throw new Error(result.message || "Google login failed");
       }
 
@@ -43,7 +39,7 @@ export default function GoogleLoginButton() {
       router.push("/dashboard");
       router.refresh();
     } catch (error) {
-      console.error(error);
+      console.error("Google Login Error:", error);
 
       toast.error(
         error instanceof Error ? error.message : "Google login failed",
