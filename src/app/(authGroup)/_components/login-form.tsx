@@ -93,7 +93,7 @@ function LoginForm() {
           >
             {pending ? "LogIn..." : "Log In"}
           </Button>
-          <Button className="w-full text-center">
+          <Button className="w-full flex justify-center items-center">
 
           <GoogleLoginButton/>
           </Button>
