@@ -1,7 +1,7 @@
 import { getAllUsers } from "../_actions/adminDashboardActions";
 import UserTable from "../_components/UserTable";
 
-
+export const dynamic = "force-dynamic";
 export default async function AdminDashboardPage() {
   const users = await getAllUsers();
 

@@ -2,7 +2,7 @@ import { getCustomerDashboard } from "../_actions/dashboardActions";
 import { CustomerDashboardData } from "../_actions/dashboardType";
 import CustomerDashboard from "../_components/customer-dashboard";
 
-
+export const dynamic = "force-dynamic";
 export default async function CustomerDashboardPage() {
   const response = await getCustomerDashboard();
 

@@ -1,7 +1,7 @@
 import { getProviderDashboard } from "../_actions/providerDashboardActions";
 import ProductTable from "../_components/ProductTable";
 import ProviderStats from "../_components/ProviderStats";
-
+export const dynamic = "force-dynamic";
 export default async function ProviderDashboardPage() {
   const data = await getProviderDashboard();
 
