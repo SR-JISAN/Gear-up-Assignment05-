@@ -12,7 +12,7 @@ export default function CTA() {
         whileInView={{ opacity: 1, scale: 1 }}
         className="container rounded-3xl  p-16 text-center"
       >
-        <h2 className="text-5xl font-bold text-black">
+        <h2 className="text-5xl font-bold bg-muted/40">
           Ready for Your Next Adventure?
         </h2>
 

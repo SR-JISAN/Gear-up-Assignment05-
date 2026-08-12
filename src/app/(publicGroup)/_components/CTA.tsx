@@ -11,7 +11,7 @@ export default function CTA() {
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7 }}
-        className="container rounded-3xl  p-16 text-center text-black"
+        className="container rounded-3xl  p-16 text-center bg-muted/40"
       >
         <h2 className="text-5xl font-bold">Ready to Gear Up?</h2>
 
