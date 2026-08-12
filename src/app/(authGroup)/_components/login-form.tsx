@@ -93,7 +93,10 @@ function LoginForm() {
           >
             {pending ? "LogIn..." : "Log In"}
           </Button>
+          <Button className="w-full text-center">
+
           <GoogleLoginButton/>
+          </Button>
         </form>
         <p>
           New to account{" "}
