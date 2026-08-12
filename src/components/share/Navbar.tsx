@@ -42,7 +42,6 @@ type TNavUser = {
 };
 
 export function Navbar({ user }: TNavUser) {
-   console.log(user)
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },

@@ -21,7 +21,7 @@ const initialState = {
 };
 
 export default function UpdateProfileForm({ user, close }: Props) {
-   console.log(user);
+
   const [state, action, pending] = useActionState(
     updateProfileAction,
     initialState,

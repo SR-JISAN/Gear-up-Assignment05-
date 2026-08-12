@@ -17,14 +17,9 @@ type Props = {
 
 export default async function ReviewDetailsPage({ params }: Props) {
   
-   console.log("Review params:", params);
-  
   const { id } = await params;
-   console.log("Review ID:", id);
 
   const review = await getReviewById(Number(id));
-
-  console.log(review.data);
 
 
   if (!review.success) {

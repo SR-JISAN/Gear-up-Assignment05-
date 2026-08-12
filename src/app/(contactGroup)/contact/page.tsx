@@ -1,4 +1,3 @@
-import ContactForm from "../_components/ContactForm";
 import ContactHero from "../_components/ContactHero";
 import ContactInfo from "../_components/ContactInfo";
 import CTA from "../_components/CTA";

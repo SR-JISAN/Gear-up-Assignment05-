@@ -34,7 +34,7 @@ const ViewProducts = async () => {
      const items: Product[]  = products.slice(0, 3);
     return (
       <div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
           {items.map((item) => (
             <Card
               key={item.id}

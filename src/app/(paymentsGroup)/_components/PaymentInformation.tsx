@@ -11,8 +11,7 @@ interface Props {
 }
 
 export default function PaymentInformation({ payment }: Props) {
-    console.log(payment);
-    console.log(payment.order);
+    
   return (
     <div className="space-y-6">
       <Card>

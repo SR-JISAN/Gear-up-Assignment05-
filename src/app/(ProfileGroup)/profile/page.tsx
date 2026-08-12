@@ -5,7 +5,7 @@ import ProfileCard from "../_components/ProfileCard";
 
 export default async function ProfilePage() {
   const user = await getProfile();
-  console.log(user)
+  
 
   return (
     <section className="container py-8">

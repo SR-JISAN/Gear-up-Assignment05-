@@ -21,7 +21,7 @@ export default async function OrderDetailsPage({ params }: Props) {
   const user = await userInfo()
 
   const role = user?.data?.role;
-  console.log("Role:", role);
+  
 
   return (
     <div className="container w-full mx-auto py-10">

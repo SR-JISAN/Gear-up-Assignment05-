@@ -21,7 +21,7 @@ export async function getMyRentals() {
 
   const result = await res.json();
 
-  console.log("RENTAL API RESPONSE:", result);
+  
 
   if (!res.ok || !result.success) {
     throw new Error(result.message || "Failed to fetch rentals");
