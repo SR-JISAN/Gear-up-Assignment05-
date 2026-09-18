@@ -6,6 +6,7 @@ import {
   FaLinkedinIn,
   FaXTwitter,
 } from "react-icons/fa6";
+import LogoImage from "../LogoImage";
 
 
 export default function Footer() {
@@ -19,13 +20,7 @@ export default function Footer() {
               href="/"
               className="mb-4 flex items-center gap-2 text-2xl font-bold"
             >
-              <Image
-                 src="/logo.png"
-                 alt="Gear Up Logo"
-                 width={120}
-                 height={40}
-                 priority
-                />
+              <LogoImage/>
             </Link>
 
             <p className="text-sm leading-7 text-muted-foreground">

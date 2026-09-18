@@ -89,7 +89,7 @@ function LoginForm() {
 
           <Button
             variant="outline"
-            className="hover:bg-cyan-600 hover:text-white font-semibold w-full"
+            className="bg-cyan-600 text-white font-semibold w-full"
           >
             {pending ? "LogIn..." : "Log In"}
           </Button>

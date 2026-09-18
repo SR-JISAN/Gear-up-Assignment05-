@@ -40,7 +40,7 @@ export default function PaymentButton({ orderId, total }: PaymentButtonProps) {
   }, [state]);
 
   return (
-    <div className="sticky top-24 rounded-2xl border bg-white p-6 shadow-sm">
+    <div className="sticky top-24 rounded-2xl border  p-6 shadow-sm">
       <h2 className="text-xl font-semibold">Payment Summary</h2>
 
       <div className="my-6 space-y-3">

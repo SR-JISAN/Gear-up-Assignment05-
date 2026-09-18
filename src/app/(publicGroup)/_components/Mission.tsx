@@ -11,7 +11,7 @@ export default function Mission() {
         transition={{ duration: 0.6 }}
         className="grid gap-10 md:grid-cols-2"
       >
-        <div className="rounded-2xl border p-8">
+        <div className="rounded-2xl text-center border p-8">
           <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
 
           <p className="text-muted-foreground">
@@ -20,7 +20,7 @@ export default function Mission() {
           </p>
         </div>
 
-        <div className="rounded-2xl border p-8">
+        <div className="rounded-2xl border text-center p-8">
           <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
 
           <p className="text-muted-foreground">

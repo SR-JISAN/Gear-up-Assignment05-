@@ -82,7 +82,7 @@ export default function SupportPage() {
 
       {/* Contact Cards */}
       <div className="grid gap-5 md:grid-cols-3">
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border p-6 shadow-sm">
           <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-100">
             <MessageCircle className="h-5 w-5 text-cyan-600" />
           </div>
@@ -99,7 +99,7 @@ export default function SupportPage() {
           </button>
         </div>
 
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border  p-6 shadow-sm">
           <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-blue-100">
             <Mail className="h-5 w-5 text-blue-600" />
           </div>
@@ -119,7 +119,7 @@ export default function SupportPage() {
           </a>
         </div>
 
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border  p-6 shadow-sm">
           <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-green-100">
             <Phone className="h-5 w-5 text-green-600" />
           </div>
@@ -157,7 +157,7 @@ export default function SupportPage() {
             return (
               <div
                 key={topic.title}
-                className="group rounded-xl border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="group rounded-xl border  p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-slate-100 group-hover:bg-cyan-100">
@@ -179,7 +179,7 @@ export default function SupportPage() {
       </section>
 
       {/* FAQ */}
-      <section className="rounded-xl border bg-white p-6 shadow-sm">
+      <section className="rounded-xl border  p-6 shadow-sm">
         <div className="mb-6">
           <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
 
@@ -202,8 +202,8 @@ export default function SupportPage() {
       </section>
 
       {/* Support Hours */}
-      <div className="flex items-start gap-4 rounded-xl border bg-slate-50 p-6">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm">
+      <div className="flex items-start gap-4 rounded-xl border  p-6">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg e shadow-sm">
           <Clock className="h-5 w-5 text-cyan-600" />
         </div>
 

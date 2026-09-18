@@ -66,7 +66,7 @@ export default async function Products({
 
  
 
-  const products: Product[] = result.data.data;
+  const product: Product[] = result.data.data;
 
 
   return (
@@ -78,10 +78,10 @@ export default async function Products({
        transition-all
        duration-300"
     >
-      {products.map((item) => (
+      {product.map((item) => (
         <Card
           key={item.id}
-          className="overflow-hidden rounded-2xl border bg-white shadow-sm 
+          className="overflow-hidden rounded-2xl border shadow-sm 
           transition-all
           duration-300
           hover:-translate-y-2
@@ -119,11 +119,17 @@ export default async function Products({
                 ${item.price_per_day}/Day
               </span>
 
-              <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-                {item.availability}
-              </span>
+              {item.availability === "OUT_OF_STOCK" ? (
+                <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
+                  {item.availability}
+                </span>
+              ) : (
+                <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+                  {item.availability}
+                </span>
+              )}
             </div>
-            <ProductDetailsModal products={item} />
+            <ProductDetailsModal product={item} />
           </div>
         </Card>
       ))}

@@ -22,8 +22,9 @@ import AdminStatusButton from "./AdminStatusButton";
 export default function UserTable({ users }: { users: AdminUser[] }) {
   return (
     <Card className="shadow-sm">
-      <CardHeader>
-        <CardTitle>All Users</CardTitle>
+      <CardHeader className="flex  items-center gap-2">
+        <CardTitle className="text-xl">Total Users :</CardTitle>
+        <p className="font-bold text-lg">{users.length ?? 0}</p>
       </CardHeader>
 
       <CardContent>
@@ -31,6 +32,7 @@ export default function UserTable({ users }: { users: AdminUser[] }) {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead>Serial No.</TableHead>
                 <TableHead>User</TableHead>
 
                 <TableHead>Email</TableHead>
@@ -53,11 +55,12 @@ export default function UserTable({ users }: { users: AdminUser[] }) {
                   </TableCell>
                 </TableRow>
               ) : (
-                users.map((user) => (
+                users.map((user, index) => (
                   <TableRow key={user.id}>
+                    <TableCell>{index + 1}</TableCell>
                     <TableCell>
                       <UserAvatar
-                        image={user.profile?.profileImage || "/avatar.png"}
+                        image={user.profile?.profileImage || "/avater.png"}
                         name={user.name}
                       />
                     </TableCell>

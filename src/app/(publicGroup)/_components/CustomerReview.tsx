@@ -33,7 +33,7 @@ export default function CustomerReviews() {
     <section className="py-20">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+          <p className="text-2xl font-semibold uppercase tracking-widest text-primary">
             Testimonials
           </p>
 

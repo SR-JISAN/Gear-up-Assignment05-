@@ -3,7 +3,7 @@ import CategoryForm from "../_components/CategoryForm";
 
 export default function AddCategoryPage() {
   return (
-    <div className="mx-auto max-w-xl space-y-6">
+    <div className="mx-auto max-w-xl space-y-6 py-9">
       <div>
         <h1 className="text-3xl font-bold">Add Category</h1>
 

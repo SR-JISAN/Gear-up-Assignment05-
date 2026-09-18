@@ -7,7 +7,7 @@ export default function UserAvatar({
   image: string | null;
   name: string;
 }) {
-  const validImage = image && image.startsWith("http") ? image : "/avatar.png";
+  const validImage = image && image.startsWith("http") ? image : "/avater.png";
 
   return (
     <div className="flex items-center gap-3">
@@ -17,10 +17,9 @@ export default function UserAvatar({
         width={40}
         height={40}
         className="
-rounded-full
-border
-object-cover
-"
+        rounded-full
+        border
+       object-cover"
       />
 
       <div>

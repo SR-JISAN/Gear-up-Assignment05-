@@ -92,11 +92,11 @@ function RegisterForm() {
 
           <Button
             variant="outline"
-            className="hover:bg-cyan-600 hover:text-white font-bold"
+            className="bg-cyan-600 text-white font-bold"
           >
             {pending ? "Regis..." : "Register"}
           </Button>
-          <GoogleLoginButton/>
+          <GoogleLoginButton />
           <p>
             Already Have Account{" "}
             <Link

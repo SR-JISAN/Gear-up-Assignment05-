@@ -9,9 +9,9 @@ import ReviewButton from "./ReviewButton";
 export default function RentalsTable({ rentals }: { rentals: IRental[] }) {
    
     return (
-      <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
+      <div className="overflow-hidden rounded-xl border  shadow-sm">
         <table className="w-full">
-          <thead className="bg-slate-50">
+          <thead >
             <tr>
               <th className="px-6 py-4 text-left">Image</th>
               <th className="px-6 py-4 text-left">Product</th>
@@ -27,7 +27,7 @@ export default function RentalsTable({ rentals }: { rentals: IRental[] }) {
               order.rentalItem.map((item) => (
                 <tr
                   key={item.id}
-                  className="border-t hover:bg-slate-50 transition"
+                  className="border-t hover:bg-slate-50 hover:text-black transition"
                 >
                   <td className="px-6 py-4">
                     <Image

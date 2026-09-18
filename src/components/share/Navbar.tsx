@@ -49,18 +49,22 @@ export function Navbar({ user }: TNavUser) {
     ...(user?.data?.role === "PROVIDER"
       ? [
           { label: "Add Products", href: "/postProduct" },
-          { label: "All Orders", href: "/orderHistory" },
+          { label: "My Products Orders", href: "/orderHistory" },
         ]
       : []),
 
     ...(user?.data?.role === "ADMIN"
-      ? [{ label: "Categories", href: "/categories" }]
-      : []),
-    ...(user?.data?.role === "ADMIN"
-      ? [{ label: "Add Categories", href: "/postCategories" }]
+      ? [
+          { label: "Categories", href: "/categories" },
+          { label: "Add Categories", href: "/postCategories" },
+          { label: "All Products Orders", href: "/orderHistory" }
+        ]
       : []),
     ...(user?.data?.role === "CUSTOMER"
-      ? [{ label: "My Rented Product", href: "/rentedProducts" }]
+      ? [
+          { label: "My Rented Product", href: "/rentedProducts" },
+          { label: "My Orders", href: "/orderHistory" },
+        ]
       : []),
 
     { label: "Contact Us", href: "/contact" },
@@ -221,7 +225,7 @@ function UserMenu({ user }: TNavUser) {
             <Button variant="ghost" size="icon" className="rounded-full">
               <Avatar className="size-8">
                 <AvatarImage
-                  src={user?.data?.profile?.profileImage || "/avatar.png"}
+                  src={user?.data?.profile?.profileImage || "/avater.png"}
                 />
 
                 <AvatarFallback>

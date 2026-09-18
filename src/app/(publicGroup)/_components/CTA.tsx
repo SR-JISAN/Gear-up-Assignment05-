@@ -19,7 +19,7 @@ export default function CTA() {
           Browse thousands of premium sports equipment today.
         </p>
 
-        <Button variant="secondary" asChild size="lg">
+        <Button className="bg-primary font-bold text-shadow-white" asChild size="lg">
           <Link href="/products">Start Renting</Link>
         </Button>
       </motion.div>

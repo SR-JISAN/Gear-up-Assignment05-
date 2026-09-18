@@ -13,7 +13,7 @@ export default function ProfileCard({ user }: Props) {
     <Card>
       <CardContent className="flex flex-col items-center p-8">
         <Image
-          src={user?.profile?.profileImage || "/avatar.png"}
+          src={user?.profile?.profileImage || "/avater.png"}
           alt={user.name}
           width={120}
           height={120}

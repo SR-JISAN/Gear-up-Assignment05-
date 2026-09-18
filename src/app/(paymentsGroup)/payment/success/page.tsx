@@ -14,7 +14,7 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
 
   return (
     <div className="container flex min-h-[80vh] items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-xl border bg-white p-8 text-center shadow-lg">
+      <div className="w-full max-w-md rounded-xl border  p-8 text-center shadow-lg">
         <CheckCircle2 className="mx-auto h-20 w-20 text-green-500" />
 
         <h1 className="mt-6 text-3xl font-bold">Payment Successful 🎉</h1>

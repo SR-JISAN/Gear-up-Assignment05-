@@ -38,7 +38,7 @@ export async function updateProductAction(id: number, formData: FormData) {
     {
       method: "PATCH",
       headers: {
-        Authorization: token!,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),

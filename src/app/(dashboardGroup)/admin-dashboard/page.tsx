@@ -6,13 +6,11 @@ export default async function AdminDashboardPage() {
   const users = await getAllUsers();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-5">
       <div>
-        <h1 className="text-3xl font-bold">
-          Admin Dashboard
-        </h1>
+        <h1 className="text-3xl text-center font-bold">Admin Dashboard</h1>
 
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-center">
           Manage users and permissions
         </p>
       </div>

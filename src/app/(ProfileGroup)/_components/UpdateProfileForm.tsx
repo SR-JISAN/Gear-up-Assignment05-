@@ -57,7 +57,7 @@ export default function UpdateProfileForm({ user, close }: Props) {
       <div>
         <label>Bio</label>
 
-        <Input name="bio" defaultValue={user.profile.bio ?? ""} />
+        <Input name="bio" defaultValue={user?.profile?.bio ?? ""} />
       </div>
 
       <div>

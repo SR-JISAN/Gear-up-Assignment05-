@@ -6,7 +6,7 @@ export default async function RentalsPage() {
   const rentals = await getMyRentals();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-9 text-center">
       <div>
         <h2 className="text-3xl font-bold">My Rentals</h2>
 

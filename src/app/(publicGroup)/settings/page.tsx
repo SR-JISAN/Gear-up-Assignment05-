@@ -10,12 +10,12 @@ import {
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 py-9">
       {/* Header */}
       <div>
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-100">
-            <SettingsIcon className="h-6 w-6 text-cyan-600" />
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl ">
+            <SettingsIcon className="h-6 w-6 " />
           </div>
 
           <div>
@@ -29,7 +29,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Account Settings */}
-      <section className="rounded-xl border bg-white shadow-sm">
+      <section className="rounded-xl border shadow-sm">
         <div className="border-b px-6 py-5">
           <div className="flex items-center gap-3">
             <User className="h-5 w-5 text-cyan-600" />
@@ -88,7 +88,7 @@ export default function SettingsPage() {
       </section>
 
       {/* Password & Security */}
-      <section className="rounded-xl border bg-white shadow-sm">
+      <section className="rounded-xl border  shadow-sm">
         <div className="border-b px-6 py-5">
           <div className="flex items-center gap-3">
             <Lock className="h-5 w-5 text-cyan-600" />
@@ -149,7 +149,7 @@ export default function SettingsPage() {
       </section>
 
       {/* Notification Settings */}
-      <section className="rounded-xl border bg-white shadow-sm">
+      <section className="rounded-xl border  shadow-sm">
         <div className="border-b px-6 py-5">
           <div className="flex items-center gap-3">
             <Bell className="h-5 w-5 text-cyan-600" />

@@ -24,7 +24,7 @@ interface Props {
 
 export default function PaymentHistoryTable({ payments, role }: Props) {
   return (
-    <div className="rounded-xl border bg-white shadow-sm">
+    <div className="rounded-xl border  shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>

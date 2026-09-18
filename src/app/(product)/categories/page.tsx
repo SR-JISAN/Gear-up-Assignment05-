@@ -6,8 +6,8 @@ export default async function CategoriesPage() {
   const categories = await getAllCategories();
 
   return (
-    <div className="space-y-6">
-      <div>
+    <div className="space-y-6 py-9 ">
+      <div className=" text-center">
         <h1 className="text-3xl font-bold">Categories</h1>
 
         <p className="text-muted-foreground">Manage all product categories.</p>

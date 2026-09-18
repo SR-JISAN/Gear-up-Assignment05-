@@ -13,7 +13,7 @@ interface OrderCardProps {
 
 export default function OrderCard({ order }: OrderCardProps) {
   return (
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border  p-6 shadow-sm">
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-xl font-semibold">Order #{order.id}</h2>

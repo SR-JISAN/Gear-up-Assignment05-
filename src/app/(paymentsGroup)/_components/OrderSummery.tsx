@@ -52,7 +52,7 @@ export type TOrder = {
 
 export default function OrderSummary({ order }: { order: TOrder["data"] }) {
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border  p-6 shadow-sm">
       <h2 className="mb-6 text-2xl font-bold">Order Summary</h2>
 
       <div className="space-y-5">

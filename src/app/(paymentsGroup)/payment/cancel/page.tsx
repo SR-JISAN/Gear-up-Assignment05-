@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function PaymentCancelPage() {
   return (
     <div className="container flex min-h-[80vh] items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-xl border bg-white p-8 text-center shadow-lg">
+      <div className="w-full max-w-md rounded-xl border  p-8 text-center shadow-lg">
         <XCircle className="mx-auto h-20 w-20 text-red-500" />
 
         <h1 className="mt-6 text-3xl font-bold">Payment Cancelled</h1>

@@ -50,13 +50,13 @@ const notifications = [
 
 export default function NotificationsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-9">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-100">
-              <Bell className="h-6 w-6 text-cyan-600" />
+              <Bell className="h-6 w-6 " />
             </div>
 
             <div>
@@ -68,16 +68,16 @@ export default function NotificationsPage() {
           </div>
         </div>
 
-        <button className="rounded-lg border px-4 py-2 text-sm font-medium transition hover:bg-slate-50">
+        <button className="rounded-lg border px-4 py-2 text-sm font-medium transition">
           Mark all as read
         </button>
       </div>
 
       {/* Notification Table */}
-      <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
+      <div className="overflow-hidden rounded-xl border  shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full min-w-200">
-            <thead className="bg-slate-50">
+            <thead>
               <tr>
                 <th className="px-6 py-4 text-left text-sm font-semibold">
                   Notification
@@ -105,7 +105,7 @@ export default function NotificationsPage() {
               {notifications.map((notification) => (
                 <tr
                   key={notification.id}
-                  className={`border-t transition hover:bg-slate-50 ${
+                  className={`border-t transition hover:bg-slate-50 hover:text-black ${
                     notification.status === "Unread" ? "bg-cyan-50/40" : ""
                   }`}
                 >
@@ -115,7 +115,7 @@ export default function NotificationsPage() {
                       <NotificationIcon type={notification.type} />
 
                       <div>
-                        <p className="font-semibold text-slate-900">
+                        <p className="font-semibold ">
                           {notification.title}
                         </p>
 
@@ -165,7 +165,7 @@ export default function NotificationsPage() {
       </div>
 
       {/* Empty / Footer info */}
-      <div className="flex items-center justify-between rounded-xl border bg-white px-6 py-4 text-sm text-slate-500">
+      <div className="flex items-center justify-between rounded-xl border  px-6 py-4 text-sm text-slate-500">
         <span>Showing {notifications.length} notifications</span>
 
         <span>

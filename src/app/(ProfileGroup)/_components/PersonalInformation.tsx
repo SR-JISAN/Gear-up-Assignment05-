@@ -58,7 +58,7 @@ export default function PersonalInformation({ user }: Props) {
           <div>
             <p className="text-sm text-muted-foreground">BIO</p>
 
-            <p className="font-medium">{user.profile.bio || "Not Added"}</p>
+            <p className="font-medium">{user?.profile?.bio || "Not Added"}</p>
           </div>
         </div>
       </CardContent>

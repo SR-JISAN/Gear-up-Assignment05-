@@ -16,13 +16,27 @@ export default function Error({
   console.error(error);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-slate-50 via-white to-slate-100 px-4">
+    <div
+      className="
+        flex min-h-screen items-center justify-center px-4
+        bg-linear-to-br from-slate-50 via-white to-slate-100
+        dark:from-slate-950 dark:via-slate-900 dark:to-slate-800
+        transition-colors duration-300
+      "
+    >
       <motion.div
         initial={{ opacity: 0, y: 40, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-lg rounded-2xl border bg-white p-10 text-center shadow-xl"
+        className="
+          w-full max-w-lg rounded-2xl border p-10 text-center shadow-xl
+          bg-white/80 border-slate-200
+          dark:bg-slate-900/80 dark:border-slate-700
+          backdrop-blur-sm
+          transition-colors duration-300
+        "
       >
+        {/* Error Icon */}
         <motion.div
           animate={{
             rotate: [0, -10, 10, -10, 0],
@@ -33,25 +47,60 @@ export default function Error({
             repeat: Infinity,
             repeatDelay: 3,
           }}
-          className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-red-100"
+          className="
+            mx-auto mb-6 flex h-24 w-24 items-center justify-center
+            rounded-full bg-red-100
+            dark:bg-red-950/50
+          "
         >
-          <AlertTriangle className="h-12 w-12 text-red-600" />
+          <AlertTriangle
+            className="
+              h-12 w-12 text-red-600
+              dark:text-red-400
+            "
+          />
         </motion.div>
 
-        <h1 className="mb-2 text-3xl font-bold">Something went wrong</h1>
+        {/* Title */}
+        <h1
+          className="
+            mb-2 text-3xl font-bold
+            text-slate-900
+            dark:text-white
+          "
+        >
+          Something went wrong
+        </h1>
 
-        <p className="mb-8 text-muted-foreground">
+        {/* Description */}
+        <p
+          className="
+            mb-8 text-muted-foreground
+            dark:text-slate-400
+          "
+        >
           An unexpected error occurred while processing your request. Please try
           again or return to the homepage.
         </p>
 
+        {/* Buttons */}
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Button onClick={reset} className="gap-2">
             <RefreshCw className="h-4 w-4" />
             Try Again
           </Button>
 
-          <Button asChild variant="outline" className="gap-2">
+          <Button
+            asChild
+            variant="outline"
+            className="
+              gap-2
+              dark:border-slate-600
+              dark:bg-slate-800
+              dark:text-slate-200
+              dark:hover:bg-slate-700
+            "
+          >
             <Link href="/">
               <Home className="h-4 w-4" />
               Go Home

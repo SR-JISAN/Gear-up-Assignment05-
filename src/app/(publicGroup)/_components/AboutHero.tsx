@@ -42,12 +42,12 @@ export default function AboutHero() {
 
       
       <div className="relative z-10 flex h-full items-center">
-        <div className="container mx-auto px-6 max-w-3xl">
+        <div className="container  mx-auto px-6 max-w-3xl">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 inline-block rounded-full border border-lime-400/40 bg-lime-500/10 px-4 py-1 text-sm text-lime-400"
+            className="mb-4 inline-block rounded-full border border-lime-400/40 bg-lime-500/10 px-4 py-1 text-sm text-white"
           >
             About GearUp
           </motion.span>
@@ -84,7 +84,7 @@ export default function AboutHero() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-sm  hover:font-bold text-black hover:bg-lime-400"
+              className=" text-sm font-bold hover:text-black  hover:bg-lime-400"
             >
               <Link href="/products">Explore Gear</Link>
             </Button>
@@ -93,7 +93,7 @@ export default function AboutHero() {
               asChild
               size="lg"
               variant="outline"
-              className="bg-white text-sm  hover:font-bold text-black hover:bg-lime-400"
+              className=" text-sm  font-bold  hover:bg-primary hover:text-white"
             >
               <Link href="/contact">Contact Us</Link>
             </Button>

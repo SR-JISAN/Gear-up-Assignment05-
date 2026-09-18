@@ -6,7 +6,7 @@ export default async function ProviderDashboardPage() {
   const data = await getProviderDashboard();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-center py-9">
       <div>
         <h1 className="text-3xl font-bold">Provider Dashboard</h1>
 
