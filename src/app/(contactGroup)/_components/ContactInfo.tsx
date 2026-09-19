@@ -28,7 +28,7 @@ const items = [
 
 export default function ContactInfo() {
   return (
-    <section className="container py-20">
+    <section className="container w-full mx-auto py-20">
       <div className="grid gap-6 md:grid-cols-4">
         {items.map((item, i) => {
           const Icon = item.icon;

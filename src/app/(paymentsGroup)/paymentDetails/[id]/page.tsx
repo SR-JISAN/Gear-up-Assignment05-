@@ -17,7 +17,7 @@ export default async function PaymentDetailsPage({ params }: Props) {
   const payment = await getSinglePayment(id);
 
   return (
-    <div className="container py-10">
+    <div className="container w-full mx-auto py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Payment Details</h1>
       </div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Mission() {
   return (
-    <section className="container py-24">
+    <section className="container w-full mx-auto py-24">
       <motion.div
         initial={{ opacity: 0, x: -80 }}
         whileInView={{ opacity: 1, x: 0 }}

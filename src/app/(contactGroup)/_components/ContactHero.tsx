@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export default function ContactHero() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-r from-black via-slate-900 to-black py-28">
+    <section className="relative w-full mx-auto overflow-hidden bg-linear-to-r from-black via-slate-900 to-black py-28">
       <div className="absolute inset-0 bg-[url('/contact-banner.jpg')] bg-cover bg-center opacity-20" />
 
-      <div className="container relative z-10 text-center">
+      <div className="container mx-auto relative z-10 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}

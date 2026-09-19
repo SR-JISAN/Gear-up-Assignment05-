@@ -12,7 +12,7 @@ export default async function MyReviewsPage() {
 
   if (!reviews.success || reviews.data.length === 0) {
     return (
-      <section className="container py-20">
+      <section className="container w-full mx-auto py-20">
         <div className="rounded-xl border border-dashed py-20 text-center">
           <h2 className="text-2xl font-bold">No Reviews Yet</h2>
 

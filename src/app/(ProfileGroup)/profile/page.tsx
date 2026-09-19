@@ -8,7 +8,7 @@ export default async function ProfilePage() {
   
 
   return (
-    <section className="container py-8">
+    <section className="container w-full mx-auto py-8">
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold">My Profile</h1>
 

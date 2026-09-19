@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button";
 
 export default function CTA() {
   return (
-    <section>
+    <section className="mx-auto w-full">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        className="container rounded-3xl  p-16 text-center"
+        className="container rounded-3xl mx-auto  p-16 text-center"
       >
         <h2 className="text-5xl font-bold ">
           Ready for Your Next Adventure?

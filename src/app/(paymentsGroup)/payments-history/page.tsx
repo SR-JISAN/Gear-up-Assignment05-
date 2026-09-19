@@ -9,8 +9,8 @@ export default async function PaymentHistoryPage() {
 
   if (!result.success) {
     return (
-      <div className="container py-10">
-        <div className="rounded-xl border  p-8 text-center shadow-sm">
+      <div className="container w-full mx-auto py-10">
+        <div className="rounded-xl border mx-auto  p-8 text-center shadow-sm">
           <h2 className="text-2xl font-semibold">Payment History</h2>
 
           <p className="mt-3 text-muted-foreground">{result.message}</p>
@@ -20,7 +20,7 @@ export default async function PaymentHistoryPage() {
   }
 
   return (
-    <section className="container py-8">
+    <section className="container w-full mx-auto py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Payment History</h1>
 

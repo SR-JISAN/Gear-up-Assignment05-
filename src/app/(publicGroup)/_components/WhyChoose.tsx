@@ -24,8 +24,8 @@ const features = [
 
 export default function WhyChoose() {
   return (
-    <section className="bg-muted/40 py-24">
-      <div className="container">
+    <section className="bg-muted/40 w-11/12 mx-auto py-24">
+      <div className="container mx-auto">
         <h2 className="text-center text-4xl font-bold mb-14">
           Why Choose GearUp?
         </h2>
